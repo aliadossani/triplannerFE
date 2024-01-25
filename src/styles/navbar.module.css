@@ -1,0 +1,17 @@
+.navbar {
+    height: 10%;
+    background-color: aqua;
+    color:white;
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-around;
+    align-items: center;
+}
+
+.navbar img {
+    height: 40px;
+}
+
+.navbar ul {
+  
+}
