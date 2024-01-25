@@ -34,6 +34,7 @@ const AuthForm = ({ isLogin = false }) => {
         const parsed = await response.json();
         console.log(parsed);
         saveToken(parsed.token);
+        navigate("/trips");
       }
     } catch (error) {
       console.log(error);
@@ -83,21 +84,21 @@ const AuthForm = ({ isLogin = false }) => {
       ) : (
         <>
           <label>
+            Email
+            <input
+              type="email"
+              required
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+            />
+          </label>
+          <label>
             Password
             <input
               type="password"
               required
               value={password}
               onChange={(event) => setPassword(event.target.value)}
-            />
-          </label>
-          <label>
-            Username
-            <input
-              type="username"
-              required
-              value={username}
-              onChange={(event) => setUsername(event.target.value)}
             />
           </label>
         </>
