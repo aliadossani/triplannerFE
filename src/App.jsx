@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import PrivateRoute from "./components/PrivateRoute";
 import NewTripPage from "./pages/NewTripPage";
-import TripsDetailsPage from "./pages/TripsDetailsPage";
+import TripDetailsPage from "./pages/TripDetailsPage";
 import UpdateTripPage from "./pages/UpdateTripPage";
 import HomePage from "./pages/HomePage.jsx";
 import SignUpPage from "./pages/SignUpPage";
@@ -30,7 +30,7 @@ function App() {
           path="/trips/:tripId"
           element={
             <PrivateRoute>
-              <TripsDetailsPage />
+              <TripDetailsPage />
             </PrivateRoute>
           }
         />
