@@ -37,3 +37,4 @@ function TripsPage() {
 }
 
 export default TripsPage;
+
