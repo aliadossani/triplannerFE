@@ -6,7 +6,7 @@ import "../styles/NotFound.css";
 const NotFoundPage = () => {
   return (
     <NavLink className="NotFound" to="/">
-      <h2>404 Page Not Found, click here to go back to the Homepage</h2>
+      <h1>404 Page Not Found, click here to go back to the Homepage</h1>
       <img src={appLogo} />
     </NavLink>
   );
