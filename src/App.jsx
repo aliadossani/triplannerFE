@@ -10,6 +10,7 @@ import LoginPage from "./pages/LoginPage";
 import TripsPage from "./pages/TripsPage";
 import Navbar from "./components/Navbar.jsx";
 
+
 function App() {
   return (
     <>
