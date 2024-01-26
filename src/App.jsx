@@ -8,8 +8,9 @@ import HomePage from "./pages/HomePage.jsx";
 import SignUpPage from "./pages/SignUpPage";
 import LoginPage from "./pages/LoginPage";
 import TripsPage from "./pages/TripsPage";
+import AboutUsPage from "./pages/AboutUsPage";
+import NotFoundPage from "./pages/NotFoundPage";
 import Navbar from "./components/Navbar.jsx";
-
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/aboutUs" element={<AboutUsPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route
@@ -37,7 +39,7 @@ function App() {
         />
         <Route path="/trips/new" element={<NewTripPage />} />
         <Route path="/trips/:tripId/update" element={<UpdateTripPage />} />
-        <Route path="*" element={<h1>404 Page not found</h1>} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>
   );

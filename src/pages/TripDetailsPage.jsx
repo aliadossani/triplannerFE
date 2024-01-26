@@ -43,6 +43,19 @@ const TripDetailsPage = () => {
       <p>{trip.title}</p>
       <p>{trip.image}</p>
       <p>{trip.destination}</p>
+
+      {
+        trip?.groceries?.length && trip.groceries.map((grocery, index) => {
+            return (
+                <div key={index}>
+                    <p>{grocery.name}</p>
+                    <p>{grocery.quantity}</p>
+                    <p>{grocery.label}</p>
+                </div>
+            )
+        })
+      }
+
       
       {userId === trip.createdBy && (
         <>

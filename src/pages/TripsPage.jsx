@@ -1,36 +1,39 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function TripsPage() {
-  const [trips, setTrips] = useState([])
+  const [trips, setTrips] = useState([]);
 
   const fetchTrips = async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/trips`)
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/trips`);
       if (response.ok) {
-        const tripData = await response.json()
-        setTrips(tripData)
+        const tripData = await response.json();
+        setTrips(tripData);
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   useEffect(() => {
-    fetchTrips()
-  }, [])
+    fetchTrips();
+  }, []);
 
   return (
     <div>
       <h1>Trips page</h1>
       <ul>
-        {trips.map(trip => (
-          <li key={trip._id}>
-            <p>{trip.title}</p>
-          </li>
+        {trips.map((trip) => (
+          <Link to={`/trips/${trip._id}`}>
+            <li key={trip._id}>
+              <p>{trip.title}</p>
+            </li>
+          </Link>
         ))}
       </ul>
     </div>
-  )
+  );
 }
 
-export default TripsPage
+export default TripsPage;
