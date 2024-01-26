@@ -37,8 +37,22 @@ function App() {
             </PrivateRoute>
           }
         />
-        <Route path="/trips/new" element={<NewTripPage />} />
-        <Route path="/trips/:tripId/update" element={<UpdateTripPage />} />
+        <Route
+          path="/trips/new"
+          element={
+            <PrivateRoute>
+              <NewTripPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/trips/:tripId/update"
+          element={
+            <PrivateRoute>
+              <UpdateTripPage />
+            </PrivateRoute>
+          }
+        />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>
