@@ -25,8 +25,8 @@ function TripsPage() {
       <h1>Trips page</h1>
       <ul>
         {trips.map((trip) => (
-          <Link to={`/trips/${trip._id}`}>
-            <li key={trip._id}>
+          <Link key={trip._id} to={`/trips/${trip._id}`}>
+            <li>
               <p>{trip.title}</p>
             </li>
           </Link>
