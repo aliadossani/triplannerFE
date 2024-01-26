@@ -9,28 +9,35 @@ const Navbar = () => {
 
   return (
     <nav className={styles.navbar}>
-      <NavLink to="/">
-        <img src={appLogo} />
-      </NavLink>
       {isAuthenticated ? (
         <>
-          <li>
-            <NavLink to="/trips/new">New Trip</NavLink>
-          </li>
-          <li>
-            <button type="button" onClick={logout}>
-              Logout
-            </button>
-          </li>
+          <NavLink to="/trips">
+            <img src={appLogo} />
+          </NavLink>
+          <NavLink to="/aboutUs">
+            <button type="button">AboutUs</button>
+          </NavLink>
+          <NavLink to="/trips/new">
+            <button type="button">New Trip</button>
+          </NavLink>
+          <button type="button" onClick={logout}>
+            Logout
+          </button>
         </>
       ) : (
         <>
-          <li>
-            <NavLink to="/signup">Signup</NavLink>
-          </li>
-          <li>
-            <NavLink to="/login">Login</NavLink>
-          </li>
+          <NavLink to="/">
+            <img src={appLogo} />
+          </NavLink>
+          <NavLink to="/aboutUs">
+            <button type="button">AboutUs</button>
+          </NavLink>
+          <NavLink to="/signup">
+            <button type="button">Signup</button>
+          </NavLink>
+          <NavLink to="/login">
+            <button type="button">Login</button>
+          </NavLink>
         </>
       )}
     </nav>
