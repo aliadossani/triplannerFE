@@ -25,11 +25,11 @@ function TripsPage() {
       <h1>Trips page</h1>
       <ul>
         {trips.map((trip) => (
+           <li key={trip._id}>
           <Link to={`/trips/${trip._id}`}>
-            <li key={trip._id}>
               <p>{trip.title}</p>
-            </li>
           </Link>
+          </li>
         ))}
       </ul>
     </div>
