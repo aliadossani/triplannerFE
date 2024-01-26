@@ -4,29 +4,30 @@ import { useNavigate } from 'react-router-dom'
 
 const NewTripPage = () => {
   const [title, setTitle] = useState('')
-  const [author, setAuthor] = useState('')
-  const [pages, setPages] = useState(0)
+  const [image, setImage] = useState('')
+  const [destination, setDestination] = useState('')
   const { fetchWithToken } = useContext(AuthContext)
 
   const navigate = useNavigate()
 
   const handleSubmit = async event => {
     event.preventDefault()
-    const bookToCreate = { title, author, pages }
+    const tripToCreate = { title, image, destination }
+    console.log(tripToCreate)
 
     try {
-      const response = await fetchWithToken('/books', 'POST', bookToCreate)
+      const response = await fetchWithToken('/trips', 'POST', tripToCreate)
       if (response.status === 201) {
-        const book = await response.json()
-        console.log(book)
-        navigate(`/books/${book._id}`)
+        const newTrip = await response.json()
+        console.log(newTrip)
+        navigate(`/trips/${newTrip._id}`)
       } else {
         console.log('Something went wrong')
       }
     } catch (error) {
       console.error(error)
     }
-  }
+  } 
 
   return (
     <>
@@ -64,7 +65,7 @@ const NewTripPage = () => {
         />
         </label>
 
-        <label>
+{/*         <label>
         Participants:
         <select value={participants} onChange={(event) => handleDishTypeChange(e)}>
                   <option value="">All</option>
@@ -73,7 +74,7 @@ const NewTripPage = () => {
                   <option value="main">Main Course</option>
                   <option value="dessert">Dessert</option>
                 </select>
-        </label>
+        </label> */}
 
         <button type='submit'>SUBMIT</button>
       </form>
