@@ -24,7 +24,7 @@ const NewTripPage = () => {
     }
   }
 
-  useEffect(fetchUsers(), [])
+  useEffect(() => {fetchUsers()}, [])
 
 
   // Handle participants checkbox
@@ -95,14 +95,14 @@ const NewTripPage = () => {
         <div>
             <p>Select Participants:</p>
             {participants.map(participant => (
-                <div key={participant.id}>
+                <div key={participant._id}>
                     <input
                     type="checkbox"
-                    id={participant.id}
-                    checked={selectedParticipants.includes(participant.id)}
-                    onChange={() => handleCheckboxChange(participant.id)}
+                    id={participant._id}
+                    checked={selectedParticipants.includes(participant._id)}
+                    onChange={() => handleCheckboxChange(participant._id)}
                     />
-                    <label htmlFor={participant.id}>{participant.name}</label>
+                    <label htmlFor={participant._id}>{participant.username}</label>
                 </div>
             ))} 
         </div>
