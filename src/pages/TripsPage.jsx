@@ -23,9 +23,17 @@ function TripsPage() {
     <div>
       <h1>Trips page</h1>
       <ul>
+<<<<<<< Updated upstream
         {trips.map(trip => (
           <li key={trip._id}>
             <p>{trip.title}</p>
+=======
+        {trips.map((trip) => (
+          <li key={trip._id}>
+          <Link to={`/trips/${trip._id}`}>
+              <p>{trip.title}</p>
+          </Link>
+>>>>>>> Stashed changes
           </li>
         ))}
       </ul>
