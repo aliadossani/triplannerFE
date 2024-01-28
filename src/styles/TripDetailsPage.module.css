@@ -1,17 +1,34 @@
-.groceryCard {
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 16px;
-  margin-bottom: 16px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.headerContainer {
+    display: flex;
+    align-items: center;
+    padding: 20px 0px;
 }
 
-.groceryName {
-  font-size: 18px;
-  font-weight: bold;
+.headerContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: baseline;
 }
 
-.groceryDetails {
-  font-size: 14px;
-  color: #666;
+.headerContent h3 {
+    margin: 0px;
+    color:#0e1111;
+    font-size: 18px;
+}
+
+.headerContent h4 {
+    margin: 0px;
+    font-weight: 400;
+    color:#0e1111;
+    font-size: 14px;
+}
+.tripImageContainer{
+    margin-right: 10px;
+}
+
+.tripImage {
+    width: 60px;
+    height: auto;
+    object-fit: contain;
 }

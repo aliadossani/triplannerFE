@@ -1,18 +1,18 @@
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../contexts/AuthContext";
+import { useParams } from 'react-router-dom'
+import { useContext, useEffect, useState } from 'react'
+import { Modal, Button } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
+import { AuthContext } from '../contexts/AuthContext'
 import classes from "../styles/TripDetailsPage.module.css";
+import GroceryList from '../components/GroceryList';
+import ChangeGrocery from '../components/ChangeGrocery';
 
 const TripDetailsPage = () => {
-  const { tripId } = useParams();
+  const { tripId } = useParams()
   const [trip, setTrip] = useState();
-  const [newGrocery, setNewGrocery] = useState({
-    name: "",
-    quantity: "",
-    label: "",
-  });
-  const { fetchWithToken, userId } = useContext(AuthContext);
-  const navigate = useNavigate();
+  const [grocery, setGrocery] = useState({});
+  const [opened, { open, close }] = useDisclosure(false);
+  const { fetchWithToken, userId } = useContext(AuthContext)
 
   const fetchTrip = async () => {
     try {
@@ -23,7 +23,8 @@ const TripDetailsPage = () => {
         const tripData = await response.json();
         setTrip(tripData);
       } else {
-        console.log("Something went wrong");
+        alert("Couldn't fetch Trips");
+        console.log('Something went wrong')
       }
     } catch (error) {
       console.log(error);
@@ -34,7 +35,7 @@ const TripDetailsPage = () => {
     fetchTrip();
   }, [tripId]);
 
-  const handleAddGrocery = async (event) => {
+  const handleAddGrocery = async (event, newGrocery) => {
     event.preventDefault();
 
     try {
@@ -45,13 +46,15 @@ const TripDetailsPage = () => {
       const response = await fetchWithToken(`/groceryitems`, "POST", payload);
       if (response.ok) {
         await fetchTrip();
-        setNewGrocery({ name: "", quantity: "", label: "" });
+        close();
       } else {
         const errorData = await response.json();
-        console.log("Failed to add grocery item:", errorData);
+        alert("Couldn't add grocery item. Reason: " + errorData.message);
+        console.log('Failed to add grocery item:', errorData);
       }
     } catch (error) {
-      console.log("Error adding grocery item:", error);
+        alert("Couldn't add grocery item. Reason: " + error.message);
+        console.log('Error adding grocery item:', error);
     }
   };
 
@@ -65,95 +68,65 @@ const TripDetailsPage = () => {
         await fetchTrip();
       } else {
         const errorData = await response.json();
-        console.log("Failed to delete grocery item:", errorData);
+        alert("Couldn't delete grocery item. Reason: " + errorData.message);
+        console.log('Failed to delete grocery item:', errorData);
       }
     } catch (error) {
-      console.log("Error delete grocery item:", error);
+        alert("Couldn't delete grocery item" + error.message);
+        console.log('Error delete grocery item. Reason: ', error);
     }
   };
 
-  const handleChange = async (event) => {
-    const { name, value } = event.target;
-    setNewGrocery((prevGrocery) => ({ ...prevGrocery, [name]: value }));
-  };
+  const handleEditGroceryModal = async (grocery) => {
+    setGrocery(grocery);
+    open();
+  }
 
-  const handleDelete = async () => {
+  const handleEditGrocery = async (event, currentGrocery) => {
+    event.preventDefault();
     try {
-      const response = await fetchWithToken(`/trips/${tripId}`, "DELETE");
-      if (response.status === 204) {
-        navigate("/trips");
+        const payload = {
+          ...currentGrocery,
+        };
+        const response = await fetchWithToken(`/groceryitems/${grocery._id}`, "PUT", payload);
+        if (response.ok) {
+          await fetchTrip();
+          close();
+        } else {
+          const errorData = await response.json();
+          alert("Couldn't add grocery item. Reason: " + errorData.message);
+          console.log('Failed to add grocery item:', errorData);
+        }
+      } catch (error) {
+          alert("Couldn't add grocery item. Reason: " + error.message);
+          console.log('Error adding grocery item:', error);
       }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+
+  }
 
   return trip ? (
     <>
-      <h1>Trip Details</h1>
-      <p>{trip.title}</p>
-      <p>{trip.image}</p>
-      <p>{trip.destination}</p>
-
-      {trip?.groceries?.length ? (
-        trip.groceries.map((grocery, index) => (
-          <div className={classes.groceryCard} key={index}>
-            <p className={classes.groceryName}>{grocery.name}</p>
-            <p className={classes.groceryDetails}>
-              Quantity: {grocery.quantity}
-            </p>
-            <p className={classes.groceryDetails}>Label: {grocery.label}</p>
-            <button onClick={() => handleDeleteGrocery(grocery._id)}>
-              delete
-            </button>
-          </div>
-        ))
-      ) : (
-        <p>No groceries available.</p>
-      )}
-      <form onSubmit={handleAddGrocery}>
-        <h2>Add Grocery</h2>
-        <label>
-          Name:
-          <input
-            type="text"
-            name="name"
-            value={newGrocery.name}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Quantity:
-          <input
-            type="text"
-            name="quantity"
-            value={newGrocery.quantity}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Label:
-          <input
-            type="text"
-            name="label"
-            value={newGrocery.label}
-            onChange={handleChange}
-          />
-        </label>
-        <button type="submit">Add Grocery</button>
-      </form>
-      {userId === trip.createdBy && (
-        <div className={classes.buttonsContainer}>
-          <button
-            className={classes.deleteButton}
-            type="button"
-            onClick={handleDelete}
-          >
-            Delete
-          </button>
-          <Link to={`/trips/${trip._id}/update`}>Update</Link>
+        <div className={classes.headerContainer}>
+            <div className={classes.tripImageContainer}>
+                <img src={trip.image} className={classes.tripImage}/>
+            </div>
+            <div className={classes.headerContent}>
+                <h3>{trip.title}</h3>
+                <h4>{trip.destination}</h4>
+            </div>
         </div>
-      )}
+        <GroceryList trip={trip} handleDeleteGrocery={handleDeleteGrocery} handleEditGroceryModal={handleEditGroceryModal} />
+        <Modal
+            opened={opened}
+            title="Grocery Item"
+            centered
+            onClose={() => {
+                close();
+                setGrocery({})
+            }}>
+            <ChangeGrocery trip={trip} handleAddGrocery={handleAddGrocery} handleEditGrocery={handleEditGrocery} userId={userId} grocery={grocery} /> 
+        </Modal>
+        <Button onClick={open}>Add grocery</Button>
     </>
   ) : (
     <h2>Loading...</h2>
