@@ -1,0 +1,10 @@
+.tripCtn{
+    display: flex;
+    flex-direction: column;
+}
+
+.tripCtn img{
+    height: 500px;
+    width: auto;
+    max-width: 100%;
+}

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import classes from "../styles/TripsPage.module.css"
 
 function TripsPage() {
   const [trips, setTrips] = useState([]);
@@ -22,16 +23,14 @@ function TripsPage() {
 
   return (
     <div>
-      <h1>Trips page</h1>
-      <ul>
         {trips.map((trip) => (
           <Link key={trip._id} to={`/trips/${trip._id}`}>
-            <li>
+            <div className={classes.tripCtn}>
+              <img src={trip.image}/>
               <p>{trip.title}</p>
-            </li>
+            </div>
           </Link>
         ))}
-      </ul>
     </div>
   );
 }
