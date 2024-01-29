@@ -65,7 +65,7 @@ const [selectedParticipants, setSelectedParticipants] = useState([userId]); // s
 
   return (
     <>
-      <h1>New Trip</h1>
+      <h1>Create a New Trip</h1>
       <form onSubmit={handleSubmit} className={classes.formCtn} action="submit">
         <TextInput
           label="Title:"
