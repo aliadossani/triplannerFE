@@ -16,10 +16,12 @@ const Navbar = () => {
           </NavLink>
           <NavLink to="/trips/new">
             <button type="button">New Trip</button>
-          </NavLink>
+          </NavLink >
+          <NavLink to="/">
           <button type="button" onClick={logout}>
             Logout
           </button>
+          </NavLink>
         </>
       ) : (
         <>
