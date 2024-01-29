@@ -1,5 +1,5 @@
 import { Card, Group, Image, Text, NavLink, SimpleGrid } from "@mantine/core";
-import classes from "../Styles/About.module.css";
+import classes from "../styles/About.module.css";
 import { useViewportSize } from "@mantine/hooks";
 import LinkedIn from "../assets/link.png";
 import GitHub from "../assets/git.png";
