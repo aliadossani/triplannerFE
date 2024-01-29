@@ -14,7 +14,7 @@ const HomePage = () => {
 
   return (
     <>
-      {isAuthenticated ? (
+      {isAuthenticated ? null : (
         <>
           <h1>Welcome to TripPlanner !</h1>
           <p>
@@ -24,7 +24,7 @@ const HomePage = () => {
             vacation !
           </p>
         </>
-      ) : null}
+      )}
     </>
   );
 };
