@@ -11,11 +11,14 @@ const UpdateTripPage = () => {
   const [image, setImage] = useState("");
   const [destination, setDestination] = useState("");
   const [participants, setParticipants] = useState([]); // state to store list of participants from the DB
-  const [selectedParticipants, setSelectedParticipants] = useState([]); // state to store list of selected participants from the form
+  
   const [createdBy, setCreatedBy] = useState([]);
   const { fetchWithToken } = useContext(AuthContext);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+
+  const {userId} = useContext(AuthContext);
+  const [selectedParticipants, setSelectedParticipants] = useState([userId]); // state to store list of selected participants from the form
 
   const fetchUsers = async () => {
     try {
@@ -136,12 +139,8 @@ const UpdateTripPage = () => {
                 <div key={participant._id}>
                   <input
                     type="checkbox"
-                    checked={
-                      participant._id === createdBy ||
-                      selectedParticipants.some(
-                        (selected) => selected._id === participant._id
-                      )
-                    }
+                    disabled={participant._id === userId}
+                    checked= { participant._id === createdBy  || selectedParticipants.some((selected) => selected._id === participant._id)}
                     onChange={() => handleCheckboxChange(participant._id)}
                   />
                   <label htmlFor={participant._id}>
