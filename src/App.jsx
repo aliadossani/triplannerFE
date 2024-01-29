@@ -12,11 +12,8 @@ import AboutUsPage from "./pages/AboutUsPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
-<<<<<<< Updated upstream
 import GenerateShoppingListPage from "./pages/GenerateShoppingListPage.jsx";
-=======
 import UserProfile from "./pages/UserProfile.jsx";
->>>>>>> Stashed changes
 
 function App() {
   return (

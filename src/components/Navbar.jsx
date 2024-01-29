@@ -17,13 +17,8 @@ const Navbar = () => {
           </NavLink>
           <NavLink to="/trips/new">
             <button type="button">New Trip</button>
-<<<<<<< Updated upstream
           </NavLink >
           <NavLink to="/">
-=======
-          </NavLink>
-          
->>>>>>> Stashed changes
           <button type="button" onClick={logout}>
             Logout
           </button>
