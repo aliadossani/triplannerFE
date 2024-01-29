@@ -2,8 +2,11 @@ import { useEffect, useContext, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
 
+
 const UpdateTripPage = () => {
   const { tripId } = useParams();
+  
+  
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
   const [destination, setDestination] = useState("");
@@ -24,6 +27,7 @@ const UpdateTripPage = () => {
       console.log(error);
     }
   };
+
   useEffect(() => {
     fetchUsers();
   }, [tripId]);
@@ -38,6 +42,7 @@ const UpdateTripPage = () => {
         setTitle(tripData.title);
         setImage(tripData.image);
         setDestination(tripData.destination);
+        setSelectedParticipants(tripData.participants)
       }
     } catch (error) {
       console.log(error);
@@ -84,6 +89,8 @@ const UpdateTripPage = () => {
       console.error(error);
     }
   };
+
+  console.log(selectedParticipants)
 
   return (
     <>
@@ -133,9 +140,9 @@ const UpdateTripPage = () => {
                 <div key={participant._id}>
                   <input
                     type="checkbox"
-                    id={participant._id}
-                    checked={selectedParticipants.includes(participant._id)}
-                    onChange={() => handleCheckboxChange(participant._id)}
+                    /* id={participant._id} */
+                    checked={selectedParticipants.some((selected) => selected._id === participant._id)}
+                    onChange={() => handleCheckboxChange(participant)}
                   />
                   <label htmlFor={participant._id}>
                     {participant.username}
