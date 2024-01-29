@@ -56,6 +56,7 @@ function TripsPage() {
 
   return (
     <div>
+        <h1>All your trips</h1>
         {trips.map((trip) => (
           <Link key={trip._id} to={`/trips/${trip._id}`}>
             <div className={classes.headerContainer}>
