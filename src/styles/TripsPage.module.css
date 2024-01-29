@@ -3,8 +3,44 @@
     flex-direction: column;
 }
 
-.tripCtn img{
-    height: 500px;
-    width: auto;
-    max-width: 100%;
+.headerContainer {
+    display: flex;
+    align-items: center;
+    padding: 20px 0px;
+    border-bottom: 1px solid #f3f2f2;
+}
+
+.headerContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: baseline;
+    flex: 1;
+}
+
+.headerContent h3 {
+    margin: 0px;
+    color:#0e1111;
+    font-size: 18px;
+}
+
+.headerContent h4 {
+    margin: 0px;
+    font-weight: 400;
+    color:#0e1111;
+    font-size: 14px;
+}
+.tripImageContainer{
+    margin-right: 10px;
+}
+
+.tripImage {
+    width: 60px;
+    height: auto;
+    object-fit: contain;
+}
+
+.ctaBtn {
+    margin: 10px;
+    color:#0e1111;
 }

@@ -142,6 +142,7 @@ const TripDetailsPage = () => {
             </div>
         </div>
         <GroceryList trip={trip} handleDeleteGrocery={handleDeleteGrocery} handleEditGroceryModal={handleEditGroceryModal} />
+        {/* <ParticipantList /> */}
         <Modal
             opened={opened}
             title="Grocery Item"
