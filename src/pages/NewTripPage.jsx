@@ -1,6 +1,8 @@
 import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { Button, TextInput } from "@mantine/core";
+import classes from "../styles/NewTrip.module.css";
 
 const NewTripPage = () => {
   const [title, setTitle] = useState("");
@@ -13,20 +15,6 @@ const NewTripPage = () => {
 const {userId} = useContext(AuthContext);
 const [selectedParticipants, setSelectedParticipants] = useState([userId]); // state to store list of selected participants from the form
 
-
-/*   //Retrieve the current user ID to store it as createdBy
-  useEffect(() => {
-    const token = window.localStorage.getItem("authToken");
-
-    try {
-      const decodedToken = jwtDecode(token);
-      console.log(decodedToken)
-      const creatorId = decodedToken.userId;
-    } catch (error) {
-      console.error('Error decoding token');
-    }
-  }, []); */
-  
   // Fetch users from DB
   const fetchUsers = async () => {
     try {
@@ -78,44 +66,26 @@ const [selectedParticipants, setSelectedParticipants] = useState([userId]); // s
   return (
     <>
       <h1>New Trip</h1>
-
-      <form
-        onSubmit={handleSubmit}
-        action="submit"
-        style={{ display: "flex", flexDirection: "column" }}
-      >
-        <label>
-          Title:
-          <input
-            type="text"
-            id="title"
-            value={title}
-            onChange={(event) => setTitle(event.target.value)}
-          />
-        </label>
-
-        <label>
-          Image:
-          <input
-            type="text"
-            id="image"
-            value={image}
-            onChange={(event) => setImage(event.target.value)}
-          />
-        </label>
-
-        <label>
-          {" "}
-          Destination:
-          <input
-            type="text"
-            id="destination"
-            value={destination}
-            onChange={(event) => setDestination(event.target.value)}
-          />
-        </label>
-
-        <div>
+      <form onSubmit={handleSubmit} className={classes.formCtn} action="submit">
+        <TextInput
+          label="Title:"
+          name="title"
+          value={title}
+          onChange={(event) => setTitle(event.target.value)}
+        />
+        <TextInput
+          label="Image:"
+          name="image"
+          value={image}
+          onChange={(event) => setImage(event.target.value)}
+        />
+        <TextInput
+          label="Destination:"
+          name="destination"
+          value={destination}
+          onChange={(event) => setDestination(event.target.value)}
+        />
+        <>
           <p>Select Participants:</p>
           {participants.map((participant) => (
             <div key={participant._id}>
@@ -129,8 +99,10 @@ const [selectedParticipants, setSelectedParticipants] = useState([userId]); // s
               <label htmlFor={participant._id}>{participant.username}</label>
             </div>
           ))}
-        </div>
-        <button type="submit">SUBMIT</button>
+        </>
+        <Button mt="md" fullWidth type="submit">
+          Create New Trip
+        </Button>
       </form>
     </>
   );
