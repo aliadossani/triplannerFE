@@ -12,7 +12,11 @@ import AboutUsPage from "./pages/AboutUsPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
+<<<<<<< Updated upstream
 import GenerateShoppingListPage from "./pages/GenerateShoppingListPage.jsx";
+=======
+import UserProfile from "./pages/UserProfile.jsx";
+>>>>>>> Stashed changes
 
 function App() {
   return (
@@ -23,6 +27,14 @@ function App() {
         <Route path="/about" element={<AboutUsPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route 
+        path="/user/:userId" 
+        element={
+          <PrivateRoute>
+        <UserProfile />
+        </PrivateRoute>
+         }
+          />
         <Route
           path="/trips"
           element={
