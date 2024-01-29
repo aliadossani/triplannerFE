@@ -12,6 +12,7 @@ const UpdateTripPage = () => {
   const [destination, setDestination] = useState("");
   const [participants, setParticipants] = useState([]); // state to store list of participants from the DB
   const [selectedParticipants, setSelectedParticipants] = useState([]); // state to store list of selected participants from the form
+  const [createdBy, setCreatedBy] = useState([]);
   const { fetchWithToken } = useContext(AuthContext);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
@@ -42,7 +43,8 @@ const UpdateTripPage = () => {
         setTitle(tripData.title);
         setImage(tripData.image);
         setDestination(tripData.destination);
-        setSelectedParticipants(tripData.participants)
+        setSelectedParticipants(tripData.participants);
+        setCreatedBy(tripData.createdBy)
       }
     } catch (error) {
       console.log(error);
@@ -56,14 +58,15 @@ const UpdateTripPage = () => {
 
   // Handle participants checkbox
   const handleCheckboxChange = (participantId) => {
-    const isSelected = selectedParticipants.includes(participantId);
-    if (isSelected) {
-      setSelectedParticipants(
-        selectedParticipants.filter((id) => id !== participantId)
-      );
-    } else {
-      setSelectedParticipants([...selectedParticipants, participantId]);
-    }
+    setSelectedParticipants((prevSelectedParticipants) => {
+      const isSelected = prevSelectedParticipants.some((selected) => selected._id === participantId);
+  
+      if (isSelected) {
+        return prevSelectedParticipants.filter((selected) => selected._id !== participantId);
+      } else {
+        return [...prevSelectedParticipants, participants.find((participant) => participant._id === participantId)];
+      }
+    });
   };
 
   const handleSubmit = async (event) => {
@@ -141,8 +144,8 @@ const UpdateTripPage = () => {
                   <input
                     type="checkbox"
                     /* id={participant._id} */
-                    checked={selectedParticipants.some((selected) => selected._id === participant._id)}
-                    onChange={() => handleCheckboxChange(participant)}
+                    checked= { participant._id === createdBy  || selectedParticipants.some((selected) => selected._id === participant._id)}
+                    onChange={() => handleCheckboxChange(participant._id)}
                   />
                   <label htmlFor={participant._id}>
                     {participant.username}
