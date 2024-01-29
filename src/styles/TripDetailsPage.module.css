@@ -1,39 +1,42 @@
 .headerContainer {
-    display: flex;
-    align-items: center;
-    padding: 20px 0px;
+  display: flex;
+  align-items: center;
+  padding: 20px 0px;
+  margin-left: 2rem;
+  margin-right: 2rem;
 }
 
-.headerContent{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: baseline;
-    flex: 1;
+.headerContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: baseline;
+  flex: 1;
 }
 
 .headerContent h3 {
-    margin: 0px;
-    color:#0e1111;
-    font-size: 18px;
+  margin: 0px;
+  color: #0e1111;
+  font-size: 18px;
 }
 
 .headerContent h4 {
-    margin: 0px;
-    font-weight: 400;
-    color:#0e1111;
-    font-size: 14px;
+  margin: 0px;
+  font-weight: 400;
+  color: #0e1111;
+  font-size: 14px;
 }
-.tripImageContainer{
-    margin-right: 10px;
+.tripImageContainer {
+  margin-left: 1rem;
+  margin-right: 2rem;
 }
 
 .tripImage {
-    width: 60px;
-    height: auto;
-    object-fit: contain;
+  width: 60px;
+  height: auto;
+  object-fit: contain;
 }
 
 .ctaBtn {
-    margin: 10px;
+  margin: 10px;
 }

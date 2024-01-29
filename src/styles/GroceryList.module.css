@@ -1,56 +1,58 @@
-
 .groceryCard {
-    display: flex;
-    border-radius: 8px;
-    padding: 16px;
-    margin-bottom: 16px;
-    border-bottom: 1px solid #f3f2f2;
+  display: flex;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #f3f2f2;
 }
 
-.groceryHeaderCtn{
-    display: flex;
+.groceryHeaderCtn {
+  display: flex;
+  margin-left: 2rem;
+  margin-right: 2rem;
 }
 
 .cardContent {
-    flex: 1;
+  flex: 1;
 }
 .groceryName {
-    font-size: 18px;
-    font-weight: bold;
-    margin:0px;
-    padding:10px;
-
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0px;
+  padding: 10px;
 }
 
 .groceryQuantity {
-    font-size: 18px;
-    color:#0e1111;
-    margin:0px;
-    padding:10px;
+  font-size: 18px;
+  color: #0e1111;
+  margin: 0px;
+  padding: 10px;
 }
 
-.groceryGreenLabel{
-    text-align: left;
-    margin: 0px;
-    font-size: 14px;
-    padding:10px;
-    background-color: #90EE90;
-    border-radius: 5px;
-    width: 180px;
-    text-align: center;
+.groceryGreenLabel {
+  text-align: left;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  font-size: 14px;
+  padding: 10px;
+  background-color: #90ee90;
+  border-radius: 5px;
+  width: 180px;
+  text-align: center;
 }
 
-.groceryRedLabel{
-    text-align: left;
-    margin: 0px;
-    font-size: 14px;
-    padding:10px;
-    background-color: #fa7b7b;
-    border-radius: 5px;
-    width: 180px;
-    text-align: center;
+.groceryRedLabel {
+  text-align: left;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  font-size: 14px;
+  padding: 10px;
+  background-color: #fa7b7b;
+  border-radius: 5px;
+  width: 180px;
+  text-align: center;
 }
 
 .ctaBtn {
-    margin: 10px;
+  margin: 10px;
 }

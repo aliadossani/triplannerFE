@@ -18,6 +18,7 @@ function App() {
   return (
     <>
       <Navbar />
+      <hr />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutUsPage />} />
@@ -55,9 +56,13 @@ function App() {
             </PrivateRoute>
           }
         />
-        <Route path="trips/:tripId/shoppinglist" element={<GenerateShoppingListPage />} />
+        <Route
+          path="trips/:tripId/shoppinglist"
+          element={<GenerateShoppingListPage />}
+        />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+      <hr />
       <Footer />
     </>
   );
