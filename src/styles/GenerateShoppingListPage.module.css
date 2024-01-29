@@ -1,0 +1,31 @@
+.shoppingListContainer {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .shoppingList {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .shoppingListItem {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    padding: 8px;
+  }
+  
+  .shoppingListItem span {
+    flex: 1;
+    padding: 4px;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+
+  @media print {
+    .button {
+      display: none;
+    }
+  }

@@ -11,3 +11,9 @@
 .navbar img {
     height: 40px;
 }
+
+@media print {
+    .navbar {
+      display: none;
+    }
+  }

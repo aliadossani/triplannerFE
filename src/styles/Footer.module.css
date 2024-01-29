@@ -12,3 +12,9 @@
    text-align: center;
     padding: 20px;
 }
+
+@media print {
+    .footerCtn {
+      display: none;
+    }
+  }

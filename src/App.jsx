@@ -12,6 +12,7 @@ import AboutUsPage from "./pages/AboutUsPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
+import GenerateShoppingListPage from "./pages/GenerateShoppingListPage.jsx";
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
             </PrivateRoute>
           }
         />
+        <Route path="trips/:tripId/shoppinglist" element={<GenerateShoppingListPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
