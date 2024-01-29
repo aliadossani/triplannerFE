@@ -60,7 +60,7 @@ const AuthForm = ({ isLogin = false }) => {
         <TextInput label="Password:" name="password" type="password" required="true"  value={password} onChange={(event) => setPassword(event.target.value)} />
         </>
       )}
-      <Button mt="md" fullWidth>
+      <Button mt="md" fullWidth type="submit">
         {isLogin ? "Login" : "Signup"}
      </Button>
     </form>

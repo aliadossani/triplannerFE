@@ -1,5 +1,6 @@
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useContext, useEffect, useState } from 'react'
+import { IconEdit, IconTrash } from '@tabler/icons-react';
 import { Modal, Button } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { AuthContext } from '../contexts/AuthContext'
@@ -13,6 +14,7 @@ const TripDetailsPage = () => {
   const [grocery, setGrocery] = useState({});
   const [opened, { open, close }] = useDisclosure(false);
   const { fetchWithToken, userId } = useContext(AuthContext)
+  const navigate = useNavigate();
 
   const fetchTrip = async () => {
     try {
@@ -104,6 +106,26 @@ const TripDetailsPage = () => {
 
   }
 
+  const handleDeleteTrip = async(event) => {
+    event.preventDefault();
+    try {
+        const response = await fetchWithToken(
+          `/trips/${tripId}`,
+          "DELETE"
+        );
+        if (response.ok) {
+          navigate("/trips");
+        } else {
+          const errorData = await response.json();
+          alert("Couldn't delete trips. Reason: " + errorData.message);
+          console.log('Failed to delete trips:', errorData);
+        }
+      } catch (error) {
+          alert("Couldn't delete trips" + error.message);
+          console.log('Error delete trips. Reason: ', error);
+      }
+  }
+
   return trip ? (
     <>
         <div className={classes.headerContainer}>
@@ -113,6 +135,10 @@ const TripDetailsPage = () => {
             <div className={classes.headerContent}>
                 <h3>{trip.title}</h3>
                 <h4>{trip.destination}</h4>
+            </div>
+            <div>
+                <IconEdit className={classes.ctaBtn} onClick={() => navigate(`/trips/${tripId}/update`)}  />
+                <IconTrash className={classes.ctaBtn} onClick={handleDeleteTrip}  />
             </div>
         </div>
         <GroceryList trip={trip} handleDeleteGrocery={handleDeleteGrocery} handleEditGroceryModal={handleEditGroceryModal} />

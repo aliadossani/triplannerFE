@@ -19,8 +19,8 @@ const GroceryList = ({trip, handleDeleteGrocery, handleEditGroceryModal}) => {
                 </div>
                 </div>
             <div>
-                <IconTrash className={classes.ctaBtn} onClick={() => handleDeleteGrocery(grocery._id)} />
                 <IconEdit className={classes.ctaBtn} onClick={() => handleEditGroceryModal(grocery)}  />
+                <IconTrash className={classes.ctaBtn} onClick={() => handleDeleteGrocery(grocery._id)} />
             </div>
          </div>
         ))

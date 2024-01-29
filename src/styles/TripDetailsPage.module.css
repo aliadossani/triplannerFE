@@ -9,6 +9,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: baseline;
+    flex: 1;
 }
 
 .headerContent h3 {
@@ -31,4 +32,8 @@
     width: 60px;
     height: auto;
     object-fit: contain;
+}
+
+.ctaBtn {
+    margin: 10px;
 }
