@@ -14,7 +14,9 @@ const HomePage = () => {
 
   return (
     <>
-      {isAuthenticated ? null : (
+      {isAuthenticated ? (
+        <p>Loading...</p>
+      ) : (
         <>
           <h1>Welcome to TripPlanner !</h1>
           <p>
