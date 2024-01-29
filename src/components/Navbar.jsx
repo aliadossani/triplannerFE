@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import appLogo from "../assets/appLogo.png";
-import styles from "../styles/Navbar.module.css";
+import styles from "../styles/navbar.module.css";
 import { AuthContext } from "../contexts/AuthContext";
 import { Button } from "@mantine/core";
 
