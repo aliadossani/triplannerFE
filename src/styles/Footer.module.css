@@ -1,0 +1,14 @@
+.footerCtn {
+    width: 100%;
+    position: fixed;
+    height: 80px;
+    bottom: 0;
+    flex-direction: row;
+    background-color:  aqua;
+    border: 2px solid #EDEDED;
+}
+
+.footerElements {
+   text-align: center;
+    padding: 20px;
+}

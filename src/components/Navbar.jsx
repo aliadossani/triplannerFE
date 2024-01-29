@@ -14,9 +14,6 @@ const Navbar = () => {
           <NavLink to="/trips">
             <img src={appLogo} />
           </NavLink>
-          <NavLink to="/aboutUs">
-            <button type="button">AboutUs</button>
-          </NavLink>
           <NavLink to="/trips/new">
             <button type="button">New Trip</button>
           </NavLink>
@@ -28,9 +25,6 @@ const Navbar = () => {
         <>
           <NavLink to="/">
             <img src={appLogo} />
-          </NavLink>
-          <NavLink to="/aboutUs">
-            <button type="button">AboutUs</button>
           </NavLink>
           <NavLink to="/signup">
             <button type="button">Signup</button>

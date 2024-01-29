@@ -11,6 +11,7 @@ import TripsPage from "./pages/TripsPage";
 import AboutUsPage from "./pages/AboutUsPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import Navbar from "./components/Navbar.jsx";
+import Footer from "./components/Footer.jsx";
 
 function App() {
   return (
@@ -55,6 +56,7 @@ function App() {
         />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+      <Footer />
     </>
   );
 }
