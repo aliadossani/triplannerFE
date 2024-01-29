@@ -1,5 +1,5 @@
 import { Card, Group, Image, Text, NavLink, SimpleGrid } from "@mantine/core";
-import "../Styles/About.css";
+import classes from "../styles/About.module.css";
 import { useViewportSize } from "@mantine/hooks";
 import LinkedIn from "../assets/link.png";
 import GitHub from "../assets/git.png";
@@ -8,9 +8,9 @@ function AboutPage() {
   const { width } = useViewportSize();
 
   return (
-    <div className="about">
-      <h1 className="textabout">About us</h1>
-      <p className="textabout">
+    <div className={classes.about}>
+      <h1 className={classes.textabout}>About us</h1>
+      <p className={classes.textabout}>
         We are three Ironhackers passionate about Web Development. <br />
         Check our profiles below!
       </p>

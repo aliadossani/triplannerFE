@@ -1,19 +1,20 @@
 .navbar {
-    height: 10%;
-    background-color: aqua;
-    color:white;
-    display: flex;
-    flex-direction: row; 
-    justify-content: space-around;
-    align-items: center;
+  display: flex;
+  height: 4rem;
+  background-color: aqua;
+  color: white;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: center;
 }
 
 .navbar img {
-    height: 40px;
+  margin-top: 0.7rem;
+  height: 40px;
 }
 
 @media print {
-    .navbar {
-      display: none;
-    }
+  .navbar {
+    display: none;
   }
+}

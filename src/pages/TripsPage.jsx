@@ -57,6 +57,7 @@ function TripsPage() {
 
   return (
     <Card shadow="sm" padding="lg" radius="md" withBorder>
+      <h1>All your trips</h1>
       <Card.Section>
         {trips.map((trip) => (
           <Link key={trip._id} to={`/trips/${trip._id}`}>
