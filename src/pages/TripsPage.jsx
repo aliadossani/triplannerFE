@@ -1,8 +1,9 @@
 import { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { IconEdit, IconTrash } from '@tabler/icons-react';
-import { AuthContext } from '../contexts/AuthContext'
-import classes from "../styles/TripsPage.module.css"
+import { AuthContext } from '../contexts/AuthContext';
+import classes from "../styles/TripsPage.module.css";
+import { Card, Image, Text } from '@mantine/core';
 
 function TripsPage() {
   const [trips, setTrips] = useState([]);
@@ -55,18 +56,23 @@ function TripsPage() {
   )
 
   return (
-    <div>
-        <h1>All your trips</h1>
+    <Card shadow="sm" padding="lg" radius="md" withBorder>
+      <h1>All your trips</h1>
+      <Card.Section>
         {trips.map((trip) => (
           <Link key={trip._id} to={`/trips/${trip._id}`}>
-            <div className={classes.headerContainer}>
-                <div className={classes.tripImageContainer}>
-                    <img src={trip.image} className={classes.tripImage}/>
-                </div>
-                <div className={classes.headerContent}>
-                    <h3>{trip.title}</h3>
-                    <h4>{trip.destination}</h4>
-                </div>
+            {/* <div className={classes.headerContainer}>
+                <div className={classes.tripImageContainer}> */}
+                    <Image src={trip.image} className={classes.tripImage}  height={300}/>
+                {/* </div> */}
+                {/* <div className={classes.headerContent}> */}
+                <Text size="sm" c="dimmed">
+                  <h3>{trip.title}</h3>
+                  <h4>{trip.destination}</h4>
+                </Text>
+                    
+                {/* </div> */}
+       
                 <div>
                     <IconEdit className={classes.ctaBtn} onClick={(event) => {
                       event.preventDefault();
@@ -74,10 +80,12 @@ function TripsPage() {
                     }}  />
                     <IconTrash className={classes.ctaBtn} onClick={(event) => handleDeleteTrip(event, trip._id)}  />
                 </div>
-            </div>
+            {/* </div> */}
           </Link>
+      
         ))}
-    </div>
+      </Card.Section>
+    </Card>
   );
 }
 
