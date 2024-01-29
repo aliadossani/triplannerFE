@@ -3,38 +3,45 @@ import { NavLink } from "react-router-dom";
 import appLogo from "../assets/appLogo.png";
 import styles from "../styles/Navbar.module.css";
 import { AuthContext } from "../contexts/AuthContext";
+import { Button } from "@mantine/core";
 
 const Navbar = () => {
   const { isAuthenticated, logout } = useContext(AuthContext);
 
   return (
-    <nav className={styles.navbar}>
+    <nav>
       {isAuthenticated ? (
-        <>
+        <div className={styles.navbar}>
           <NavLink to="/trips">
             <img src={appLogo} />
           </NavLink>
           <NavLink to="/trips/new">
-            <button type="button">New Trip</button>
-          </NavLink >
-          <NavLink to="/">
-          <button type="button" onClick={logout}>
-            Logout
-          </button>
+            <Button mt="md" type="button">
+              New Trip
+            </Button>
           </NavLink>
-        </>
+          <NavLink to="/">
+            <Button mt="md" type="button" onClick={logout}>
+              Logout
+            </Button>
+          </NavLink>
+        </div>
       ) : (
-        <>
+        <div className={styles.navbar}>
           <NavLink to="/">
             <img src={appLogo} />
           </NavLink>
           <NavLink to="/signup">
-            <button type="button">Signup</button>
+            <Button mt="md" type="button">
+              Signup
+            </Button>
           </NavLink>
           <NavLink to="/login">
-            <button type="button">Login</button>
+            <Button mt="md" type="button">
+              Login
+            </Button>
           </NavLink>
-        </>
+        </div>
       )}
     </nav>
   );

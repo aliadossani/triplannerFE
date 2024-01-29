@@ -1,20 +1,17 @@
 .footerCtn {
-    width: 100%;
-    position: fixed;
-    height: 80px;
-    bottom: 0;
-    flex-direction: row;
-    background-color:  aqua;
-    border: 2px solid #EDEDED;
-}
-
-.footerElements {
-   text-align: center;
-    padding: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 91%;
+  height: 3rem;
+  background-color: aqua;
+  margin: 2rem, 2rem, 0, 2rem;
+  padding-top: 0.6rem;
+  position: fixed;
+  bottom: 2rem;
 }
 
 @media print {
-    .footerCtn {
-      display: none;
-    }
+  .footerCtn {
+    display: none;
   }
+}
