@@ -11,6 +11,21 @@ const NewTripPage = () => {
   const { fetchWithToken } = useContext(AuthContext);
   const navigate = useNavigate();
 
+const {userId} = useContext(AuthContext);
+
+/*   //Retrieve the current user ID to store it as createdBy
+  useEffect(() => {
+    const token = window.localStorage.getItem("authToken");
+
+    try {
+      const decodedToken = jwtDecode(token);
+      console.log(decodedToken)
+      const creatorId = decodedToken.userId;
+    } catch (error) {
+      console.error('Error decoding token');
+    }
+  }, []); */
+  
   // Fetch users from DB
   const fetchUsers = async () => {
     try {
@@ -106,7 +121,7 @@ const NewTripPage = () => {
               <input
                 type="checkbox"
                 id={participant._id}
-                checked={selectedParticipants.includes(participant._id)}
+                checked={participant._id === userId || selectedParticipants.includes(participant._id)}
                 onChange={() => handleCheckboxChange(participant._id)}
               />
               <label htmlFor={participant._id}>{participant.username}</label>
