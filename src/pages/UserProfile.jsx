@@ -1,35 +1,60 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useState, useEffect, useContext } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../contexts/AuthContext';
 
-const UserProfile = ({ userId }) => {
-  const [userData, setUserData] = useState({});
+const UserProfile = () => {
+  const {userId} = useParams();
   const [formData, setFormData] = useState({});
+  const { fetchWithToken } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch user data when the component mounts
-    console.log('userId:', userId);
-    axios.get(`/api/user/${userId}`)
-      .then(response => {
-        setUserData(response.data)
-      console.log('response.data:', response.data);
-      })
-      .catch(error => console.error(error));
-  }, [userId]);  // The effect will re-run whenever userId changes
+    getUserProfile();
+  }, []);
+
+  const getUserProfile = async () => {
+    try {
+      const response = await fetchWithToken(
+        `/users/${userId}`
+      );
+      if (response.ok) {
+        const userData = await response.json();
+        setFormData(userData);
+      } else {
+        alert("Couldn't fetch user");
+        console.log('Something went wrong')
+      }
+    } catch (error) {
+      alert("Couldn't fetch user: " + error);
+      console.log(error);
+    }
+  }
+
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
     console.log('Submitting form with formData:', formData);
-    // Send updated user data to the backend
-    axios.put(`/api/user/${userId}`, formData)
-      .then(response => {
-        console.log('Updated user data:', response.data);
-        setUserData(response.data)
-      })
-      .catch(error => console.error(error));
+    try {
+      const response = await fetchWithToken(
+        `/users/${userId}`,
+        "PUT",
+        formData,
+      );
+      if (response.ok) {
+        // Navigate to Trips
+        navigate("/trips");
+      } else {
+        alert("Couldn't update user");
+        console.log('Something went wrong')
+      }
+    } catch (error) {
+      alert("Couldn't update user: " + error);
+      console.log(error);
+    }
   };
 
   return (
@@ -41,7 +66,7 @@ const UserProfile = ({ userId }) => {
           type="text"
           id="username"
           name="username"
-          value={formData.username || userData.username}
+          value={formData?.username}
           onChange={handleInputChange}
         />
 
@@ -50,7 +75,7 @@ const UserProfile = ({ userId }) => {
           type="email"
           id="email"
           name="email"
-          value={formData.email || userData.email}
+          value={formData?.email}
           onChange={handleInputChange}
         />
 

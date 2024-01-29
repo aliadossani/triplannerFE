@@ -1,11 +1,12 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { Menu, Text } from '@mantine/core';
 import appLogo from "../assets/appLogo.png";
 import styles from "../styles/Navbar.module.css";
 import { AuthContext } from "../contexts/AuthContext";
 
 const Navbar = () => {
-  const { isAuthenticated, logout } = useContext(AuthContext);
+  const { isAuthenticated, logout, userId } = useContext(AuthContext);
   
 
   return (
@@ -18,11 +19,28 @@ const Navbar = () => {
           <NavLink to="/trips/new">
             <button type="button">New Trip</button>
           </NavLink >
+          
+          <Menu shadow="md" width={200}>
+      <Menu.Target>
+        <Text size="lg" c="black">My Profile</Text>
+      </Menu.Target>
+
+      <Menu.Dropdown>
+        <Menu.Label>
+          
+          <NavLink to={`/user/${userId}/update`}>
+            <Text size="md" c="black">Edit Profile</Text>
+          </NavLink >
+          
+          <Menu.Divider />
+
           <NavLink to="/">
-          <button type="button" onClick={logout}>
-            Logout
-          </button>
+            <Text size="md" c="black" onClick={logout}>Logout</Text>
           </NavLink>
+        </Menu.Label>
+
+      </Menu.Dropdown>
+    </Menu>
         </>
       ) : (
         <>
