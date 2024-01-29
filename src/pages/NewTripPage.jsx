@@ -7,11 +7,12 @@ const NewTripPage = () => {
   const [image, setImage] = useState("");
   const [destination, setDestination] = useState("");
   const [participants, setParticipants] = useState([]); // state to store list of participants from the DB
-  const [selectedParticipants, setSelectedParticipants] = useState([]); // state to store list of selected participants from the form
   const { fetchWithToken } = useContext(AuthContext);
   const navigate = useNavigate();
 
 const {userId} = useContext(AuthContext);
+const [selectedParticipants, setSelectedParticipants] = useState([userId]); // state to store list of selected participants from the form
+
 
 /*   //Retrieve the current user ID to store it as createdBy
   useEffect(() => {
@@ -57,7 +58,7 @@ const {userId} = useContext(AuthContext);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const tripToCreate = { title, image, destination, participants };
+    const tripToCreate = { title, image, destination, participants: selectedParticipants };
     console.log(tripToCreate);
 
     try {
@@ -121,6 +122,7 @@ const {userId} = useContext(AuthContext);
               <input
                 type="checkbox"
                 id={participant._id}
+                disabled={participant._id === userId}
                 checked={participant._id === userId || selectedParticipants.includes(participant._id)}
                 onChange={() => handleCheckboxChange(participant._id)}
               />

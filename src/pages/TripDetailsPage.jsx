@@ -7,6 +7,7 @@ import { AuthContext } from '../contexts/AuthContext'
 import classes from "../styles/TripDetailsPage.module.css";
 import GroceryList from '../components/GroceryList';
 import ChangeGrocery from '../components/ChangeGrocery';
+import ParticipantList from '../components/ParticipantList';
 
 const TripDetailsPage = () => {
   const { tripId } = useParams()
@@ -141,8 +142,9 @@ const TripDetailsPage = () => {
                 <IconTrash className={classes.ctaBtn} onClick={handleDeleteTrip}  />
             </div>
         </div>
+        <ParticipantList trip={trip} />
         <GroceryList trip={trip} handleDeleteGrocery={handleDeleteGrocery} handleEditGroceryModal={handleEditGroceryModal} />
-        {/* <ParticipantList /> */}
+        
         <Modal
             opened={opened}
             title="Grocery Item"
