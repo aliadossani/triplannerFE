@@ -1,21 +1,24 @@
 import { useEffect, useContext, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
-
+import { Button, TextInput } from "@mantine/core";
+import classes from "../styles/UpdateTrip.module.css";
 
 const UpdateTripPage = () => {
   const { tripId } = useParams();
-  
-  
+
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
   const [destination, setDestination] = useState("");
   const [participants, setParticipants] = useState([]); // state to store list of participants from the DB
-  const [selectedParticipants, setSelectedParticipants] = useState([]); // state to store list of selected participants from the form
+  
   const [createdBy, setCreatedBy] = useState([]);
   const { fetchWithToken } = useContext(AuthContext);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+
+  const {userId} = useContext(AuthContext);
+  const [selectedParticipants, setSelectedParticipants] = useState([userId]); // state to store list of selected participants from the form
 
   const fetchUsers = async () => {
     try {
@@ -44,7 +47,7 @@ const UpdateTripPage = () => {
         setImage(tripData.image);
         setDestination(tripData.destination);
         setSelectedParticipants(tripData.participants);
-        setCreatedBy(tripData.createdBy)
+        setCreatedBy(tripData.createdBy);
       }
     } catch (error) {
       console.log(error);
@@ -59,12 +62,19 @@ const UpdateTripPage = () => {
   // Handle participants checkbox
   const handleCheckboxChange = (participantId) => {
     setSelectedParticipants((prevSelectedParticipants) => {
-      const isSelected = prevSelectedParticipants.some((selected) => selected._id === participantId);
-  
+      const isSelected = prevSelectedParticipants.some(
+        (selected) => selected._id === participantId
+      );
+
       if (isSelected) {
-        return prevSelectedParticipants.filter((selected) => selected._id !== participantId);
+        return prevSelectedParticipants.filter(
+          (selected) => selected._id !== participantId
+        );
       } else {
-        return [...prevSelectedParticipants, participants.find((participant) => participant._id === participantId)];
+        return [
+          ...prevSelectedParticipants,
+          participants.find((participant) => participant._id === participantId),
+        ];
       }
     });
   };
@@ -93,8 +103,6 @@ const UpdateTripPage = () => {
     }
   };
 
-  console.log(selectedParticipants)
-
   return (
     <>
       <h1>Update this Trip</h1>
@@ -104,46 +112,34 @@ const UpdateTripPage = () => {
         <>
           <form
             onSubmit={handleSubmit}
+            className={classes.formCtn}
             action="submit"
-            style={{ display: "flex", flexDirection: "column" }}
           >
-            <label>
-              Title:
-              <input
-                type="text"
-                id="title"
-                value={title}
-                onChange={(event) => setTitle(event.target.value)}
-              />
-            </label>
-
-            <label>
-              Image:
-              <input
-                type="text"
-                id="image"
-                value={image}
-                onChange={(event) => setImage(event.target.value)}
-              />
-            </label>
-
-            <label>
-              Destination:
-              <input
-                type="text"
-                id="destination"
-                value={destination}
-                onChange={(event) => setDestination(event.target.value)}
-              />
-            </label>
-
-            <div>
+            <TextInput
+              label="Title:"
+              name="title"
+              value={title}
+              onChange={(event) => setTitle(event.target.value)}
+            />
+            <TextInput
+              label="Image:"
+              name="image"
+              value={image}
+              onChange={(event) => setImage(event.target.value)}
+            />
+            <TextInput
+              label="Destination:"
+              name="destination"
+              value={destination}
+              onChange={(event) => setDestination(event.target.value)}
+            />
+            <>
               <p>Select Participants:</p>
               {participants.map((participant) => (
                 <div key={participant._id}>
                   <input
                     type="checkbox"
-                    /* id={participant._id} */
+                    disabled={participant._id === userId}
                     checked= { participant._id === createdBy  || selectedParticipants.some((selected) => selected._id === participant._id)}
                     onChange={() => handleCheckboxChange(participant._id)}
                   />
@@ -152,8 +148,10 @@ const UpdateTripPage = () => {
                   </label>
                 </div>
               ))}
-            </div>
-            <button type="submit">Update</button>
+            </>
+            <Button mt="md" fullWidth type="submit">
+              Update
+            </Button>
           </form>
         </>
       )}

@@ -1,0 +1,29 @@
+.participantCard{
+    display: flex;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #f3f2f2;
+}
+
+.participantHeaderCtn{
+    display: flex;
+}
+
+.cardContent {
+    flex: 1;
+}
+
+.participantUserName {
+    font-size: 14px;
+    font-weight: bold;
+    margin:0px;
+    padding:10px;
+    text-align: left;
+}
+
+.participantPicture{
+    width: 40px;
+    height: auto;
+    object-fit: contain;
+}
