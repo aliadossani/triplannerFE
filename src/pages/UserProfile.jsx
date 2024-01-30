@@ -38,10 +38,11 @@ const UserProfile = () => {
 
   const getUserTripsCount = async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/users/${userId}`);
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/trips/user/${userId}`);
       if (response.ok) {
         const tripCountData = await response.json();
-        setTripCount(tripCountData.count);
+        console.log(tripCountData)
+        setTripCount(tripCountData.length);
       } else {
         alert("Couldn't fetch user trips count");
         console.log('Something went wrong');
@@ -65,6 +66,7 @@ const UserProfile = () => {
         "PUT",
         formData,
       );
+      console.warn(response);
       if (response.ok) {
         // Navigate to Trips
         navigate("/trips");
@@ -81,15 +83,17 @@ const UserProfile = () => {
   return (
     <div>
       <h2>User Profile</h2>
-      <p>Number of Trips: {tripCount}</p>
+      
       <form onSubmit={handleFormSubmit} className={classes.formCtn}>
       <TextInput label="Username:" name="username" value= {formData?.username} onChange={handleInputChange} />
         
-      <TextInput label="User Image:" name="image" value= {formData?.picture} onChange={handleInputChange} />
+      <TextInput label="User Image:" name="picture" value= {formData?.picture} onChange={handleInputChange} />
         
       <Button mt="md" fullWidth type="submit">
         Save Changes</Button>
       </form>
+
+      <p className={classes.tripCount}>Number of Trips: {tripCount}</p>
     </div>
   );
 };
