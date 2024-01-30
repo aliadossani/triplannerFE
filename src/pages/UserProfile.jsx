@@ -1,15 +1,19 @@
 import { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthContext';
+import { TextInput, Button } from '@mantine/core';
+import classes from "../styles/UserProfile.module.css"
 
 const UserProfile = () => {
   const {userId} = useParams();
   const [formData, setFormData] = useState({});
+  const [tripCount, setTripCount] = useState(0);
   const { fetchWithToken } = useContext(AuthContext);
   const navigate = useNavigate();
 
   useEffect(() => {
     getUserProfile();
+    getUserTripsCount();
   }, []);
 
   const getUserProfile = async () => {
@@ -30,6 +34,23 @@ const UserProfile = () => {
     }
   }
 
+  //Trip Count
+
+  const getUserTripsCount = async () => {
+    try {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/users/${userId}`);
+      if (response.ok) {
+        const tripCountData = await response.json();
+        setTripCount(tripCountData.count);
+      } else {
+        alert("Couldn't fetch user trips count");
+        console.log('Something went wrong');
+      }
+    } catch (error) {
+      alert("Couldn't fetch user trips count: " + error);
+      console.log(error);
+    }
+  };
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -60,28 +81,14 @@ const UserProfile = () => {
   return (
     <div>
       <h2>User Profile</h2>
-      <form onSubmit={handleFormSubmit}>
-        <label htmlFor="username">Username:</label>
-        <input
-          type="text"
-          id="username"
-          name="username"
-          value={formData?.username}
-          onChange={handleInputChange}
-        />
-
-        <label htmlFor="email">Email:</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={formData?.email}
-          onChange={handleInputChange}
-        />
-
-        {/* Add more fields as needed */}
-
-        <button type="submit">Save Changes</button>
+      <p>Number of Trips: {tripCount}</p>
+      <form onSubmit={handleFormSubmit} className={classes.formCtn}>
+      <TextInput label="Username:" name="username" value= {formData?.username} onChange={handleInputChange} />
+        
+      <TextInput label="User Image:" name="image" value= {formData?.picture} onChange={handleInputChange} />
+        
+      <Button mt="md" fullWidth type="submit">
+        Save Changes</Button>
       </form>
     </div>
   );

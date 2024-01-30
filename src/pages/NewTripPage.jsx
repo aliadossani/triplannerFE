@@ -6,6 +6,7 @@ import classes from "../styles/NewTrip.module.css";
 
 const NewTripPage = () => {
   const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
   const [destination, setDestination] = useState("");
   const [participants, setParticipants] = useState([]); // state to store list of participants from the DB
@@ -78,6 +79,12 @@ const [selectedParticipants, setSelectedParticipants] = useState([userId]); // s
           name="image"
           value={image}
           onChange={(event) => setImage(event.target.value)}
+        />
+        <TextInput
+          label="Description:"
+          name="descriprion"
+          value={description}
+          onChange={(event) => setDescription(event.target.value)}
         />
         <TextInput
           label="Destination:"

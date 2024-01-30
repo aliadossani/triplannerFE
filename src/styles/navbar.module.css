@@ -13,6 +13,10 @@
   height: 40px;
 }
 
+.profileCtn{
+  cursor: pointer;
+}
+
 @media print {
   .navbar {
     display: none;

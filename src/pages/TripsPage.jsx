@@ -122,6 +122,4 @@ function TripsPage() {
     </Card>
   );
 }
-
 export default TripsPage;
-
