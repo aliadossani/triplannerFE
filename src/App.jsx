@@ -66,7 +66,6 @@ function App() {
             </PrivateRoute>
           }
         />
-        <Route path="trips/:tripId/groceryitems" element={<GroceryList />} />
         <Route
           path="trips/:tripId/shoppinglist"
           element={<GenerateShoppingListPage />}
