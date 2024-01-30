@@ -6,7 +6,6 @@ function Search({ searchTerm, setSearchTerm }) {
     <>
       <TextInput
         leftSection={<IconSearch size="1rem" stroke={1.5} />}
-        style={{ width: "500px" }}
         variant="filled"
         size="md"
         radius="xl"
