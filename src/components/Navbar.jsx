@@ -6,9 +6,10 @@ import styles from "../styles/navbar.module.css";
 import { AuthContext } from "../contexts/AuthContext";
 import { Button } from "@mantine/core";
 
+
 const Navbar = () => {
+
   const { isAuthenticated, logout, userId } = useContext(AuthContext);
-  
 
   return (
     <nav>
@@ -18,10 +19,10 @@ const Navbar = () => {
             <img src={appLogo} />
           </NavLink>
           <NavLink to="/trips/new">
-            <button type="button">New Trip</button>
+            New Trip
           </NavLink >
           
-          <Menu shadow="md" width={200}>
+          <Menu>
             <Menu.Target>
               <Text size="lg" c="black"className={styles.profileCtn}>My Profile</Text>
             </Menu.Target>
@@ -30,13 +31,13 @@ const Navbar = () => {
               <Menu.Label>
                 
                 <NavLink to={`/user/${userId}/update`}>
-                  <Text size="md" c="black">Edit Profile</Text>
+                  <Text>Edit Profile</Text>
                 </NavLink >
                 
                 <Menu.Divider />
 
                 <NavLink to="/">
-                  <Text size="md" c="black" onClick={logout}>Logout</Text>
+                  <Text onClick={logout}>Logout</Text>
                 </NavLink>
               </Menu.Label>
 
@@ -62,6 +63,6 @@ const Navbar = () => {
       )}
     </nav>
   );
-};
+}; 
 
 export default Navbar;

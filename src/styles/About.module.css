@@ -6,5 +6,5 @@
 }
 
 .textabout {
-  color: black;
+  color: var(--darkText)
 }

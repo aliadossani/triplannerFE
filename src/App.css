@@ -1,7 +1,13 @@
-#root {
+:root {
   max-width: 100vw;
   text-align: center;
   margin-bottom: 4rem;
+  --primaryBlue: #27BFD3FF ;
+  --secondaryBlue: #209CD8FF;
+  --orange : #EC8C70FF;
+  --darkText: #3b4948FF;
+  --white: #ffffffff;
+  --lightBackground: #E8F3F3FF;
 }
 
 hr {

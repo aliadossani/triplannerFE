@@ -9,8 +9,16 @@ import AuthContextProvider from "./contexts/AuthContext.jsx";
 import { createTheme, MantineProvider } from '@mantine/core';
 
 const theme = createTheme({
-  /** Put your mantine theme override here */
-});
+  black: '#3b4948FF',
+  colors: {
+    primaryBlue: ['#27BFD3FF'],
+    secondaryBlue: ['#209CD8FF'],
+    orange : ['#EC8C70FF'],
+    darkText: ['#3b4948FF'],
+    white: ['#ffffffff'],
+    lightBackground: ['#E8F3F3FF'],
+  },
+})
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
