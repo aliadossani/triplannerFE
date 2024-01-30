@@ -5,7 +5,11 @@ import { Center } from "@mantine/core";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-const GroceryList = ({ trip, handleDeleteGrocery, handleEditGroceryModal }) => {
+const GroceryList = ({
+  handleDeleteGrocery,
+  handleEditGroceryModal,
+  handleAddGrocery,
+}) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [timeoutId, setTimeoutId] = useState();
   const { tripId } = useParams();
@@ -38,7 +42,7 @@ const GroceryList = ({ trip, handleDeleteGrocery, handleEditGroceryModal }) => {
   useEffect(() => {
     // Call the asynchronous function inside useEffect
     fetchGroceries();
-  }, [tripId]); // Make sure to include dependencies
+  }, [tripId, handleDeleteGrocery, handleEditGroceryModal, handleAddGrocery]); // Make sure to include dependencies
 
   useEffect(() => {
     clearTimeout(timeoutId);
