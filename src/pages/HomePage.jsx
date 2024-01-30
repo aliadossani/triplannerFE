@@ -18,7 +18,7 @@ const HomePage = () => {
         <p>Loading...</p>
       ) : (
         <>
-          <h1>Welcome to TripPlanner !</h1>
+          <h1>Welcome to WanderBasket !</h1>
           <p>
             Say goodbye to the hassle of planning holidays with friends! Are you
             tired of spending too much time organizing every detail? Let us

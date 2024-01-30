@@ -14,7 +14,6 @@ import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import GenerateShoppingListPage from "./pages/GenerateShoppingListPage.jsx";
 import UserProfile from "./pages/UserProfile.jsx";
-import GroceryList from "./components/GroceryList.jsx";
 
 function App() {
   return (
