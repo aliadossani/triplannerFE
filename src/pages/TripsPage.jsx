@@ -3,10 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { IconEdit, IconTrash } from '@tabler/icons-react';
 import { AuthContext } from '../contexts/AuthContext';
 import classes from "../styles/TripsPage.module.css";
-<<<<<<< Updated upstream
 import { Card, Image, Text, Input, Button } from '@mantine/core';
-=======
->>>>>>> Stashed changes
 
 function TripsPage() {
   const [trips, setTrips] = useState([]);
@@ -63,7 +60,6 @@ function TripsPage() {
     </>
   )
 
-<<<<<<< Updated upstream
   const handleSearch = (event) => {
     event.preventDefault();
     const lowerCaseQuery = searchQuery.toLowerCase();
@@ -124,31 +120,6 @@ function TripsPage() {
         ))}
       </Card.Section>
     </Card>
-=======
-return (
-  <div>
-      {trips.map((trip) => (
-        <Link key={trip._id} to={`/trips/${trip._id}`}>
-              <div className={classes.headerContainer}>
-                 <div className={classes.tripImageContainer}>
-                    <img src={trip.image} className={classes.tripImage}/>
-                 </div>
-              <div className={classes.headerContent}>
-                  <h3>{trip.title}</h3>
-                  <h4>{trip.destination}</h4>
-              </div>
-              <div>
-                  <IconEdit className={classes.ctaBtn} onClick={(event) => {
-                    event.preventDefault();
-                    navigate(`/trips/${trip._id}/update`)
-                  }}  />
-                  <IconTrash className={classes.ctaBtn} onClick={(event) => handleDeleteTrip(event, trip._id)}  />
-              </div>
-          </div>
-        </Link>
-      ))}
-      </div>
->>>>>>> Stashed changes
   );
 }
 export default TripsPage;
