@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import appLogo from "../assets/appLogo.png";
+import appLogo from "../assets/applogo_color.png";
 import "../styles/NotFound.css";
 import { AuthContext } from "../contexts/AuthContext";
 import { useContext } from "react";
