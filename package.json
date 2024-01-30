@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@mantine/carousel": "^7.5.0",
+    "@mantine/colors-generator": "^7.5.0",
     "@mantine/core": "^7.5.0",
     "@mantine/form": "^7.5.0",
     "@mantine/hooks": "^7.5.0",
