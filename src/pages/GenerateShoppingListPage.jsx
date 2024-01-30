@@ -32,11 +32,9 @@ const GenerateShoppingListPage = () => {
   };
 
   useEffect(() => {
-    // Call the asynchronous function inside useEffect
     fetchGroceries();
-  }, [tripId]); // Make sure to include dependencies
+  }, [tripId]); 
 
-  // Filter the groceries when the data is updated
   useEffect(() => {
     setFilteredGroceries(groceries.filter((grocery) => grocery.label === 'Needs to be purchased'));
   }, [groceries]);
@@ -47,15 +45,23 @@ const GenerateShoppingListPage = () => {
   return (
     <div className={styles.shoppingListContainer}>
       <h1>Your Shopping List</h1>
-      <ul className={styles.shoppingList}>
-        {filteredGroceries.map((grocery) => (
-          <li key={grocery._id} className={styles.shoppingListItem}>
-            <span>{grocery.name}</span>
-            <span>({grocery.quantity})</span>
-          </li>
-        ))}
-      </ul>
-      <button className={styles.button} onClick={handlePrint}>Print</button>
+      {filteredGroceries.length > 0 ? (
+        <>
+          <ul className={styles.shoppingList}>
+            {filteredGroceries.map((grocery) => (
+              <li key={grocery._id} className={styles.shoppingListItem}>
+                <span>{grocery.name}</span>
+                <span>({grocery.quantity})</span>
+              </li>
+            ))}
+          </ul>
+          <button className={styles.button} onClick={handlePrint}>
+            Print
+          </button>
+        </>
+      ) : (
+        <p>You have no items in your shopping list. Go back to add some.</p>
+      )}
     </div>
   );
 };
