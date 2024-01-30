@@ -13,16 +13,26 @@ import NotFoundPage from "./pages/NotFoundPage";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import GenerateShoppingListPage from "./pages/GenerateShoppingListPage.jsx";
+import UserProfile from "./pages/UserProfile.jsx";
 
 function App() {
   return (
     <>
       <Navbar />
+      <hr />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutUsPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route 
+        path="/user/:userId/update" 
+        element={
+          <PrivateRoute>
+        <UserProfile />
+        </PrivateRoute>
+         }
+          />
         <Route
           path="/trips"
           element={
@@ -55,9 +65,13 @@ function App() {
             </PrivateRoute>
           }
         />
-        <Route path="trips/:tripId/shoppinglist" element={<GenerateShoppingListPage />} />
+        <Route
+          path="trips/:tripId/shoppinglist"
+          element={<GenerateShoppingListPage />}
+        />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+      <hr />
       <Footer />
     </>
   );
