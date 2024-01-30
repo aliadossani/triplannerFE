@@ -26,7 +26,9 @@ const GroceryList = ({ trip, handleDeleteGrocery, handleEditGroceryModal }) => {
         const groceryData = await response.json();
         setGroceries(groceryData);
       } else {
+        alert("Couldn't fetch groceries");
         console.log("Something went wrong");
+        setSearchTerm("");
       }
     } catch (error) {
       console.log(error);
@@ -51,7 +53,8 @@ const GroceryList = ({ trip, handleDeleteGrocery, handleEditGroceryModal }) => {
     }
   }, [searchTerm]);
 
-  if (!groceries?.length) return <p>No groceries available.</p>;
+  if (!groceries) return;
+  <p>No groceries available.</p>;
   return (
     <>
       <h3>Grocery List</h3>
