@@ -74,6 +74,8 @@ function TripsPage() {
   };
 
   const handleReloadPage = () => {
+    fetchTrips();
+    setSearchResultsText('');
     navigate('/trips');
   }
 
