@@ -23,7 +23,7 @@ const Navbar = () => {
           
           <Menu shadow="md" width={200}>
             <Menu.Target>
-              <Text size="lg" c="black">My Profile</Text>
+              <Text size="lg" c="black"className={styles.profileCtn}>My Profile</Text>
             </Menu.Target>
 
             <Menu.Dropdown>
