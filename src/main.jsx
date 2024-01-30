@@ -7,7 +7,6 @@ import { BrowserRouter } from "react-router-dom";
 import AuthContextProvider from "./contexts/AuthContext.jsx";
 import { generateColors } from "@mantine/colors-generator";
 
-<<<<<<< Updated upstream
 import { createTheme, MantineProvider } from "@mantine/core";
 
 const theme = createTheme({
@@ -22,16 +21,12 @@ const theme = createTheme({
     lightBackground: generateColors("#E8F3F3FF"),
   },
 });
-=======
-import { MantineProvider } from '@mantine/core';
-
->>>>>>> Stashed changes
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthContextProvider>
-        <MantineProvider>
+        <MantineProvider theme={theme}>
           <App />
         </MantineProvider>
       </AuthContextProvider>
