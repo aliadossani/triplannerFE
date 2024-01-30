@@ -24,7 +24,7 @@ const Navbar = () => {
           
           <Menu>
             <Menu.Target>
-              <Text size="lg" c="black" className={styles.profileCtn}>
+              <Text className={styles.profileCtn}>
                 My Profile
               </Text>
             </Menu.Target>
@@ -50,12 +50,12 @@ const Navbar = () => {
             <img src={appLogo} />
           </NavLink>
           <NavLink to="/signup">
-            <Button mt="md" type="button">
+            <Button type="button">
               Signup
             </Button>
           </NavLink>
           <NavLink to="/login">
-            <Button mt="md" type="button">
+            <Button type="button">
               Login
             </Button>
           </NavLink>
