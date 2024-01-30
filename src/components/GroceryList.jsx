@@ -32,7 +32,6 @@ const GroceryList = ({
       } else {
         alert("Couldn't fetch groceries");
         console.log("Something went wrong");
-        setSearchTerm("");
       }
     } catch (error) {
       console.log(error);
@@ -57,47 +56,56 @@ const GroceryList = ({
     }
   }, [searchTerm]);
 
-  if (!groceries) return;
-  <p>No groceries available.</p>;
   return (
-    <>
-      <h3>Grocery List</h3>
-      <Center>
-        <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-      </Center>
-      {groceries.map((grocery, index) => (
-        <div className={classes.groceryCard} key={index}>
-          <div className={classes.cardContent}>
-            <div className={classes.groceryHeaderCtn}>
-              <p className={classes.groceryName}>
-                {grocery.name} ({grocery.quantity})
-              </p>
+    <div>
+      {groceries.length ? (
+        <>
+          <h3>Grocery List</h3>
+          <Center>
+            <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+          </Center>
+          {groceries.map((grocery, index) => (
+            <div className={classes.groceryCard} key={index}>
+              <div className={classes.cardContent}>
+                <div className={classes.groceryHeaderCtn}>
+                  <p className={classes.groceryName}>
+                    {grocery.name} ({grocery.quantity})
+                  </p>
+                </div>
+                <div className={classes.groceryLabelCtn}>
+                  <p
+                    className={
+                      grocery.label === "Needs to be purchased"
+                        ? classes.groceryRedLabel
+                        : classes.groceryGreenLabel
+                    }
+                  >
+                    {grocery.label}
+                  </p>
+                </div>
+              </div>
+              <div>
+                <IconEdit
+                  className={classes.ctaBtn}
+                  onClick={() => handleEditGroceryModal(grocery)}
+                />
+                <IconTrash
+                  className={classes.ctaBtn}
+                  onClick={() => handleDeleteGrocery(grocery._id)}
+                />
+              </div>
             </div>
-            <div className={classes.groceryLabelCtn}>
-              <p
-                className={
-                  grocery.label === "Needs to be purchased"
-                    ? classes.groceryRedLabel
-                    : classes.groceryGreenLabel
-                }
-              >
-                {grocery.label}
-              </p>
-            </div>
-          </div>
-          <div>
-            <IconEdit
-              className={classes.ctaBtn}
-              onClick={() => handleEditGroceryModal(grocery)}
-            />
-            <IconTrash
-              className={classes.ctaBtn}
-              onClick={() => handleDeleteGrocery(grocery._id)}
-            />
-          </div>
-        </div>
-      ))}
-    </>
+          ))}
+        </>
+      ) : (
+        <>
+          <Center>
+            <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+          </Center>
+          <p>No groceries available.</p>
+        </>
+      )}
+    </div>
   );
 };
 
