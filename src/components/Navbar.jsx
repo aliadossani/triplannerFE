@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
-import { Menu, Text } from '@mantine/core';
-import appLogo from "../assets/appLogo.png";
+import { Menu, Text } from "@mantine/core";
+import appLogo from "../assets/applogo_bk.png";
 import styles from "../styles/navbar.module.css";
 import { AuthContext } from "../contexts/AuthContext";
 import { Button } from "@mantine/core";
@@ -24,12 +24,13 @@ const Navbar = () => {
           
           <Menu>
             <Menu.Target>
-              <Text size="lg" c="black"className={styles.profileCtn}>My Profile</Text>
+              <Text size="lg" c="black" className={styles.profileCtn}>
+                My Profile
+              </Text>
             </Menu.Target>
 
             <Menu.Dropdown>
               <Menu.Label>
-                
                 <NavLink to={`/user/${userId}/update`}>
                   <Text>Edit Profile</Text>
                 </NavLink >
@@ -40,7 +41,6 @@ const Navbar = () => {
                   <Text onClick={logout}>Logout</Text>
                 </NavLink>
               </Menu.Label>
-
             </Menu.Dropdown>
           </Menu>
         </div>
