@@ -10,7 +10,7 @@ import { generateColors } from "@mantine/colors-generator";
 import { createTheme, MantineProvider } from "@mantine/core";
 
 const theme = createTheme({
-  black: "darkText",
+  black: "#3b4948FF",
   primaryColor: "primaryBlue",
   colors: {
     primaryBlue: generateColors("#27BFD3FF"),
