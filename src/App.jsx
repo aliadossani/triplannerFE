@@ -14,6 +14,7 @@ import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import GenerateShoppingListPage from "./pages/GenerateShoppingListPage.jsx";
 import UserProfile from "./pages/UserProfile.jsx";
+import GroceryList from "./components/GroceryList.jsx";
 
 function App() {
   return (
@@ -25,14 +26,14 @@ function App() {
         <Route path="/about" element={<AboutUsPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route 
-        path="/user/:userId/update" 
-        element={
-          <PrivateRoute>
-        <UserProfile />
-        </PrivateRoute>
-         }
-          />
+        <Route
+          path="/user/:userId/update"
+          element={
+            <PrivateRoute>
+              <UserProfile />
+            </PrivateRoute>
+          }
+        />
         <Route
           path="/trips"
           element={
@@ -65,6 +66,7 @@ function App() {
             </PrivateRoute>
           }
         />
+        <Route path="trips/:tripId/groceryitems" element={<GroceryList />} />
         <Route
           path="trips/:tripId/shoppinglist"
           element={<GenerateShoppingListPage />}
