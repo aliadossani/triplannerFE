@@ -15,11 +15,21 @@ import Footer from "./components/Footer.jsx";
 import GenerateShoppingListPage from "./pages/GenerateShoppingListPage.jsx";
 import UserProfile from "./pages/UserProfile.jsx";
 
+/* import Chatbot from 'react-chatbot-kit'
+import 'react-chatbot-kit/build/main.css'
+import config from './chatbot/config.js';
+import MessageParser from './chatbot/Messageparser.jsx';
+import ActionProvider from './chatbot/ActionProvider.jsx'; */
+
 function App() {
   return (
     <>
       <Navbar />
-      <hr />
+      {/* <Chatbot
+        config={config}
+        messageParser={MessageParser}
+        actionProvider={ActionProvider}
+      /> */}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutUsPage />} />

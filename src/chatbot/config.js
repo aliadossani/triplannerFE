@@ -14,12 +14,7 @@ const config = {
       backgroundColor: '#5ccc9d',
     },
   },
-  widgets: [
-    {
-      widgetName: 'dogPicture',
-      widgetFunc: (props) => <DogPicture {...props} />,
-    },
-  ],
+  
 };
 
 export default config;
