@@ -1,11 +1,9 @@
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import styles from '../styles/GenerateShoppingListPage.module.css';
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import styles from "../styles/GenerateShoppingListPage.module.css";
 
 const GenerateShoppingListPage = () => {
   const [filteredGroceries, setFilteredGroceries] = useState([]);
-  const [groceries, setGroceries] = useState([]); // to store groceries fetched from db
-
   const { tripId } = useParams();
 
   // Handle print button
@@ -21,10 +19,14 @@ const GenerateShoppingListPage = () => {
       );
       if (response.ok) {
         const groceryData = await response.json();
-        setGroceries(groceryData);
+        setFilteredGroceries(
+          groceryData.filter(
+            (grocery) => grocery.label === "Needs to be purchased"
+          )
+        );
       } else {
         alert("Couldn't fetch groceries");
-        console.log('Something went wrong');
+        console.log("Something went wrong");
       }
     } catch (error) {
       console.log(error);
@@ -33,14 +35,7 @@ const GenerateShoppingListPage = () => {
 
   useEffect(() => {
     fetchGroceries();
-  }, [tripId]); 
-
-  useEffect(() => {
-    setFilteredGroceries(groceries.filter((grocery) => grocery.label === 'Needs to be purchased'));
-  }, [groceries]);
-
-  console.log(filteredGroceries);
-  console.log(groceries);
+  }, [tripId]);
 
   return (
     <div className={styles.shoppingListContainer}>
