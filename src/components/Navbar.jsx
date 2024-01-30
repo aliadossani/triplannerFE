@@ -17,7 +17,9 @@ const Navbar = () => {
             <img src={appLogo} />
           </NavLink>
           <NavLink to="/trips/new">
-            <button type="button">New Trip</button>
+            <Button mt="md" type="button">
+              New Trip
+            </Button>
           </NavLink>
 
           <Menu shadow="md" width={200}>
