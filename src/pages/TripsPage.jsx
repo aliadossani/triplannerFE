@@ -100,6 +100,7 @@ function TripsPage() {
               <Image src={trip.image} className={classes.tripImage} height={300} />
               <Text size="sm" c="dimmed">
                 <h3>{trip.title}</h3>
+                <h4>{trip.description}</h4>
                 <h4>{trip.destination}</h4>
               </Text>
               <div>

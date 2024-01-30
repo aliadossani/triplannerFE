@@ -135,6 +135,7 @@ const TripDetailsPage = () => {
             </div>
             <div className={classes.headerContent}>
                 <h3>{trip.title}</h3>
+                <h4>{trip.description}</h4>
                 <h4>{trip.destination}</h4>
             </div>
             <div>

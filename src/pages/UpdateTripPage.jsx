@@ -9,6 +9,7 @@ const UpdateTripPage = () => {
 
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
+  const [description, setDescription]= useState("");
   const [destination, setDestination] = useState("");
   const [participants, setParticipants] = useState([]); // state to store list of participants from the DB
   
@@ -45,6 +46,7 @@ const UpdateTripPage = () => {
         const tripData = await response.json();
         setTitle(tripData.title);
         setImage(tripData.image);
+        setDescription(tripData.description);
         setDestination(tripData.destination);
         setSelectedParticipants(tripData.participants);
         setCreatedBy(tripData.createdBy);
@@ -84,6 +86,7 @@ const UpdateTripPage = () => {
     const tripToUpdate = {
       title,
       image,
+      description,
       destination,
       participants: selectedParticipants,
     };
@@ -126,6 +129,12 @@ const UpdateTripPage = () => {
               name="image"
               value={image}
               onChange={(event) => setImage(event.target.value)}
+            />
+            <TextInput
+              label="Description:"
+              name="description"
+              value={description}
+              onChange={(event) => setDescription(event.target.value)}
             />
             <TextInput
               label="Destination:"
