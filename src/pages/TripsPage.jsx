@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { IconEdit, IconTrash } from '@tabler/icons-react';
 import { AuthContext } from '../contexts/AuthContext';
 import classes from "../styles/TripsPage.module.css";
-import { Card, Image, Text, Input, Button } from '@mantine/core';
+import { Card, Image, Text, Input, Button, Container } from '@mantine/core';
 
 function TripsPage() {
   const [trips, setTrips] = useState([]);
@@ -80,7 +80,7 @@ function TripsPage() {
   }
 
   return (
-    <Card shadow="sm" padding="lg" radius="md" withBorder>
+    <Container size="md">
      <Link to="/trips" className={classes.reloadLink}>
         <h1 onClick={handleReloadPage}>Your trips</h1>
       </Link>
@@ -88,39 +88,42 @@ function TripsPage() {
           <Input
             placeholder="Search trips..."
             value={searchQuery}
+            className={classes.searchInput}
             onChange={(event) => setSearchQuery(event.target.value)}
           />
           <Button type="submit">Search</Button>
       </form>
       {searchResultsText && <h2>{searchResultsText}</h2>}
-      <Card.Section>
-        {filteredTrips.map((trip) => (
-          <Link key={trip._id} to={`/trips/${trip._id}`}>
-            <div className={classes.tripContainer}>
-              <Image src={trip.image} className={classes.tripImage} height={300} />
-              <Text size="sm" c="dimmed">
-                <h3>{trip.title}</h3>
-                <h4>{trip.description}</h4>
-                <h4>{trip.destination}</h4>
-              </Text>
-              <div>
-                <IconEdit
-                  className={classes.ctaBtn}
-                  onClick={(event) => {
-                    event.preventDefault();
-                    navigate(`/trips/${trip._id}/update`);
-                  }}
-                />
-                <IconTrash
-                  className={classes.ctaBtn}
-                  onClick={(event) => handleDeleteTrip(event, trip._id)}
-                />
+      {filteredTrips.map((trip) => (
+        <Link key={trip._id} to={`/trips/${trip._id}`}>
+          <Card shadow="sm" padding="lg" mb="sm" mt="sm" radius="md" withBorder>
+            <Card.Section>
+              <div className={classes.tripContainer}>
+                <Image src={trip.image} className={classes.tripImage} height={300} />
+                <Text size="sm" c="dimmed">
+                  <h3>{trip.title}</h3>
+                  <h4>{trip.description}</h4>
+                  <h4>{trip.destination}</h4>
+                </Text>
+                <div>
+                  <IconEdit
+                    className={classes.ctaBtn}
+                    onClick={(event) => {
+                      event.preventDefault();
+                      navigate(`/trips/${trip._id}/update`);
+                    }}
+                  />
+                  <IconTrash
+                    className={classes.ctaBtn}
+                    onClick={(event) => handleDeleteTrip(event, trip._id)}
+                  />
+                </div>
               </div>
-            </div>
-          </Link>
-        ))}
-      </Card.Section>
-    </Card>
+            </Card.Section>
+          </Card>
+        </Link>
+      ))}
+    </Container>
   );
 }
 export default TripsPage;

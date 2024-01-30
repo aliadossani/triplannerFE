@@ -37,7 +37,7 @@
 }
 
 .tripImage {
-  width: 60px;
+  width: 100%;
   height: auto;
   object-fit: contain;
 }
@@ -45,4 +45,13 @@
 .ctaBtn {
   margin: 10px;
   color: #0e1111;
+}
+
+.searchContainer {
+  display: flex;
+}
+
+.searchInput {
+  flex: 1;
+  margin-right: 10px;
 }

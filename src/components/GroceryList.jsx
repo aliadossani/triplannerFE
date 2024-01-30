@@ -60,7 +60,7 @@ const GroceryList = ({
     <div>
       {groceries.length ? (
         <>
-          <h3>Grocery List</h3>
+          <h3 className={classes.header}>Grocery List</h3>
           <Center>
             <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
           </Center>

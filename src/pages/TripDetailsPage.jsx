@@ -156,7 +156,7 @@ const TripDetailsPage = () => {
             }}>
             <ChangeGrocery trip={trip} handleAddGrocery={handleAddGrocery} handleEditGrocery={handleEditGrocery} userId={userId} grocery={grocery} /> 
         </Modal>
-        <Button onClick={open}>Add grocery</Button>
+        <Button mr="sm" onClick={open}>Add grocery</Button>
         <Button onClick={() => navigate(`/trips/${tripId}/shoppinglist`)}>Print the shopping list</Button>
     </>
   ) : (

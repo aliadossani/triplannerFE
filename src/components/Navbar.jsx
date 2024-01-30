@@ -1,6 +1,7 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Menu, Text } from "@mantine/core";
+import { IconChevronDown } from '@tabler/icons-react';
 import appLogo from "../assets/applogo_bk.png";
 import styles from "../styles/navbar.module.css";
 import { AuthContext } from "../contexts/AuthContext";
@@ -9,7 +10,33 @@ import { Button } from "@mantine/core";
 
 const Navbar = () => {
 
-  const { isAuthenticated, logout, userId } = useContext(AuthContext);
+  const [formData, setFormData] = useState({});
+  const { isAuthenticated, logout, userId, fetchWithToken } = useContext(AuthContext);
+
+
+  useEffect(() => {
+    if(userId) {
+      getUserProfile();
+    }
+  }, [userId]);
+
+  const getUserProfile = async () => {
+    try {
+      const response = await fetchWithToken(
+        `/users/${userId}`
+      );
+      if (response.ok) {
+        const userData = await response.json();
+        setFormData(userData);
+      } else {
+        alert("Couldn't fetch user");
+        console.log('Something went wrong')
+      }
+    } catch (error) {
+      alert("Couldn't fetch user: " + error);
+      console.log(error);
+    }
+  }
 
   return (
     <nav>
@@ -24,9 +51,14 @@ const Navbar = () => {
           
           <Menu>
             <Menu.Target>
-              <Text className={styles.profileCtn}>
-                My Profile
-              </Text>
+              <div className={styles.profileEntryContainer}>
+                <img className={styles.profileEntryImg} src={formData?.picture}/>
+                <div>
+                  <Text className={styles.profileEntryText}>{formData?.username}</Text>
+                  <Text className={styles.profileEntryText}>{formData?.email}</Text>
+                </div>
+                <IconChevronDown className={styles.profileEntryIcon} size="1.5rem" />
+              </div>
             </Menu.Target>
 
             <Menu.Dropdown>
@@ -49,16 +81,18 @@ const Navbar = () => {
           <NavLink to="/">
             <img src={appLogo} />
           </NavLink>
-          <NavLink to="/signup">
-            <Button type="button">
-              Signup
-            </Button>
-          </NavLink>
-          <NavLink to="/login">
-            <Button type="button">
-              Login
-            </Button>
-          </NavLink>
+          <div>
+            <NavLink className={styles.navlinkBtn} to="/signup">
+              <Button type="button">
+                Signup
+              </Button>
+            </NavLink>
+            <NavLink className={styles.navlinkBtn} to="/login">
+              <Button type="button">
+                Login
+              </Button>
+            </NavLink>
+          </div>
         </div>
       )}
     </nav>

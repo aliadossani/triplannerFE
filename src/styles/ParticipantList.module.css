@@ -12,6 +12,12 @@
   margin-right: 2rem;
 }
 
+.header {
+  text-align: left;
+  margin-left: 2rem;
+  padding-left: 16px;
+}
+
 .cardContent {
   flex: 1;
 }

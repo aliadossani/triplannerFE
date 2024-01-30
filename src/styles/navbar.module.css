@@ -4,17 +4,42 @@
   background-color: aqua;
   color: white;
   flex-direction: row;
-  justify-content: space-around;
-  align-content: center;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 10px;
 }
 
 .navbar img {
-  margin-top: 0.7rem;
   height: 40px;
+}
+
+.navlinkBtn {
+  margin: 5px;
 }
 
 .profileCtn{
   cursor: pointer;
+}
+
+.profileEntryContainer{
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.profileEntryImg {
+  border-radius: 50%;
+  margin-top: 0px!important;
+  margin-right: 20px;
+}
+
+.profileEntryText {
+  color:#0e1111;
+}
+
+.profileEntryIcon {
+  margin-left:10px;
+  color:#0e1111;
 }
 
 @media print {

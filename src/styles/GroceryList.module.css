@@ -56,3 +56,9 @@
 .ctaBtn {
   margin: 10px;
 }
+
+.header {
+  text-align: left;
+  margin-left: 2rem;
+  padding-left: 16px;
+}

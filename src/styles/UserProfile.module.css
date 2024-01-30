@@ -9,3 +9,9 @@
     margin-left: 2rem;
     margin-right: 2rem;
 }
+
+.formImg {
+    border-radius: 50%;
+    margin-top: 10px;
+    width: 50px;
+}
