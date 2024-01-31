@@ -70,7 +70,7 @@ const NewTripPage = () => {
   };
 
   return (
-    <>
+    <div className={classes.pageCtn}>
       <h1>Create a New Trip</h1>
       <Container size="xs">
         <form
@@ -125,7 +125,7 @@ const NewTripPage = () => {
           </Button>
         </form>
       </Container>
-    </>
+    </div>
   );
 };
 
