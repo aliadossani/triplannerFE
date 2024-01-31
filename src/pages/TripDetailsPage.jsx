@@ -145,11 +145,16 @@ const TripDetailsPage = () => {
         <Image src={trip.image} radius="md" mah="20vw" />
         <SimpleGrid cols={width > 1200 ? 2 : 1}>
           <div>
-            <Text size="sm" c="darkText">
-              <h3>{trip.title}</h3>
-              <h4>{trip.description}</h4>
-              <h4>{trip.destination}</h4>
+            <Text size="xl" fw={700} c="darkText">
+              {trip.title}
             </Text>
+            <Text size="lg" fw={600} c="darkText">
+              {trip.description}
+            </Text>
+            <Text size="lg" fw={600} c="darkText">
+              {trip.destination}
+            </Text>
+            <Space h="md" />
             <IconEdit onClick={() => navigate(`/trips/${tripId}/update`)} />
             <IconTrash onClick={handleDeleteTrip} />
           </div>

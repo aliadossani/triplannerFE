@@ -5,8 +5,8 @@ const ParticipantList = ({ trip }) => {
   if (!trip?.participants?.length) return <p>No participants available.</p>;
   return (
     <Container>
-      <Text size="sm" c="darkText">
-        <h3>Participant List</h3>
+      <Text size="xl" fw={700} c="darkText">
+        Participant List
       </Text>
 
       {trip.participants.map((participant, index) => (
@@ -22,8 +22,8 @@ const ParticipantList = ({ trip }) => {
               maw={50}
             />
             <Space w="md" />
-            <Text size="sm" c="darkText">
-              <p>{participant.username}</p>
+            <Text size="lg" fw={600} c="darkText">
+              {participant.username}
             </Text>
           </Container>
         </div>

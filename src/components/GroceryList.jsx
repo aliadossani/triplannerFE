@@ -1,6 +1,5 @@
 import { IconEdit, IconTrash } from "@tabler/icons-react";
 import Search from "../components/Search";
-import classes from "../styles/GroceryList.module.css";
 import {
   Center,
   Container,
@@ -80,38 +79,40 @@ const GroceryList = ({
     <Container>
       {groceries.length ? (
         <Container>
-          <Text size="sm" c="darkText">
-            <h3>Grocery List</h3>
+          <Text size="xl" fw={700} c="darkText">
+            Grocery List
           </Text>
 
-          <Container maw="70vw">
+          <Container mt="1rem" maw="70vw">
             <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
           </Container>
           {groceries.map((grocery, index) => (
             <SimpleGrid key={index} mt="1rem" cols={3}>
               <Center>
                 <Image src={grocery?.image} radius="md" mah={50} maw={50} />
-                <Space w="md" />
-                <Text size="sm" c="darkText">
-                  <h3>
-                    {grocery.name} ({grocery.quantity})
-                  </h3>
+                <Space w="xs" />
+                <Text size="lg" fw={700} c="darkText">
+                  {grocery.name} ({grocery.quantity})
                 </Text>
               </Center>
-              <Container>
-                <Text size="sm">
-                  <p
-                    className={
-                      grocery.label === "Needs to be purchased"
-                        ? classes.groceryRedLabel
-                        : classes.groceryGreenLabel
-                    }
-                  >
-                    {grocery.label}
-                  </p>
-                </Text>
-              </Container>
               <Center>
+                <Space w="xl" />
+                <Text
+                  p="0.2rem"
+                  size="lg"
+                  fw={600}
+                  c="white"
+                  bg={
+                    grocery.label === "Needs to be purchased"
+                      ? "labelRed"
+                      : "labelGreen"
+                  }
+                >
+                  {grocery.label}
+                </Text>
+              </Center>
+              <Center>
+                <Space w="xs" />
                 <IconEdit onClick={() => handleEditGroceryModal(grocery)} />
                 <IconTrash onClick={() => handleDeleteGrocery(grocery._id)} />
               </Center>
@@ -123,8 +124,8 @@ const GroceryList = ({
           <Center>
             <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
           </Center>
-          <Text size="sm" c="darkText">
-            <h3>No groceries available.</h3>
+          <Text size="xl" fw={700} c="darkText">
+            No groceries available.
           </Text>
         </Container>
       )}

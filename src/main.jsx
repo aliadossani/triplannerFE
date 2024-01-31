@@ -16,9 +16,11 @@ const theme = createTheme({
     primaryBlue: generateColors("#27BFD3FF"),
     secondaryBlue: generateColors("#209CD8FF"),
     orange: generateColors("#EC8C70FF"),
-    darkText: generateColors("#3b4948FF"),
-    white: generateColors("#ffffffff"),
+    darkText: generateColors("#3B4948FF"),
+    white: generateColors("#FFFFFFFF"),
     lightBackground: generateColors("#E8F3F3FF"),
+    labelGreen: generateColors("#90EE90FF"),
+    labelRed: generateColors("#FA7B7BFF"),
   },
 });
 
