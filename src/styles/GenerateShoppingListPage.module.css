@@ -1,22 +1,27 @@
 .shoppingListContainer {
-    max-width: 600px;
-    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    min-height: 84%
   }
   
   .shoppingList {
+    display: flex;
+    flex-direction: column;
     list-style: none;
     padding: 0;
   }
   
   .shoppingListItem {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     border-bottom: 1px solid #ccc;
     padding: 8px;
   }
   
   .shoppingListItem span {
-    flex: 1;
     padding: 4px;
   }
   

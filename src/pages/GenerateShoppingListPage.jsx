@@ -1,17 +1,16 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styles from "../styles/GenerateShoppingListPage.module.css";
+import { Button } from "@mantine/core";
 
 const GenerateShoppingListPage = () => {
   const [filteredGroceries, setFilteredGroceries] = useState([]);
   const { tripId } = useParams();
 
-  // Handle print button
   const handlePrint = () => {
     window.print();
   };
-
-  // Fetch groceries for a specific trip
+  
   const fetchGroceries = async () => {
     try {
       const response = await fetch(
@@ -50,9 +49,9 @@ const GenerateShoppingListPage = () => {
               </li>
             ))}
           </ul>
-          <button className={styles.button} onClick={handlePrint}>
+          <Button className={styles.button} onClick={handlePrint}>
             Print
-          </button>
+          </Button>
         </>
       ) : (
         <p>You have no items in your shopping list. Go back to add some.</p>

@@ -167,7 +167,6 @@ function App() {
 
         ]}
       />
-      <hr />
       <Footer />
     </div>
   );
