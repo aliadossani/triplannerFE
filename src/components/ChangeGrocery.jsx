@@ -2,8 +2,8 @@ import { useState } from "react";
 import { TextInput, Button, Select } from '@mantine/core';
 
 const ChangeGrocery = ({handleAddGrocery,handleEditGrocery, userId, trip, grocery = {}}) => {
-    const {name, quantity, label} = grocery;
-  const [newGrocery, setNewGrocery] = useState({ name: name || '', quantity: quantity || '', label: label || '' });
+    const {name, quantity, label, image} = grocery;
+  const [newGrocery, setNewGrocery] = useState({ name: name || '', quantity: quantity || '', label: label || '', image: image || '' });
 
   const handleChange = async (event) => {
     const { name, value } = event.target;
@@ -11,10 +11,10 @@ const ChangeGrocery = ({handleAddGrocery,handleEditGrocery, userId, trip, grocer
   };
     return (
         <>
-        {userId === trip.createdBy && (
             <div>
                 <TextInput label="Name" name="name" defaultValue={newGrocery.name} onChange={handleChange} />
                 <TextInput label="Quantity" name="quantity" defaultValue={newGrocery.quantity} onChange={handleChange} />
+                <TextInput label="Image" name="image" defaultValue={newGrocery.image} onChange={handleChange} />
                 <Select
                     label="Label"
                     name="label"
@@ -35,7 +35,6 @@ const ChangeGrocery = ({handleAddGrocery,handleEditGrocery, userId, trip, grocer
                     }
                 </Button>
             </div>
-        )}
         </>
     )
 }

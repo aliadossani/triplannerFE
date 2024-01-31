@@ -10,7 +10,7 @@ const ParticipantList = ({trip}) => {
             <div className={classes.participantCard} key={index}>
                 <div className={classes.cardContent}>
                     <div className={classes.participantHeaderCtn}>
-                         <img src={participant.picture} className={classes.participantPicture}/>
+                         <img src={participant.picture} className={classes.participantPicture || "https://cdn-icons-png.flaticon.com/512/9131/9131529.png"}/>
                          <p className={classes.participantUserName}>{participant.username}</p>
                         
                     </div>
