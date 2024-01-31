@@ -6,9 +6,15 @@
   gap: 40px;
   width: 100%;
   height: 3rem;
-  background-color: aqua;
+  background-color: var(--primaryBlue);
   padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
   bottom: 0;
+  color: white;
+}
+
+.link{
+  color:white;
 }
 
 @media print {

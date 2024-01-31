@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className={classes.footerCtn}>
       <p>2024 WanderBasket | All rights reserved</p>
-      <Link to="/about"> <p>About Us</p></Link>
+      <Link to="/about" className={classes.link}> <p>About Us</p></Link>
     </footer>
   );
 };
