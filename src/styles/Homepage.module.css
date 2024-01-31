@@ -12,7 +12,8 @@
 }
 
 .heroSection img {
-    width: 15em;
+    width: 30%;
+    max-width: 260px;
 }
 
 .heroSection p {
