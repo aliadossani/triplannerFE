@@ -107,7 +107,7 @@ const UpdateTripPage = () => {
   };
 
   return (
-    <>
+    <div className={classes.pageCtn}>
       <h1>Update this Trip</h1>
       {loading ? (
         <p>Loading...</p>
@@ -171,7 +171,7 @@ const UpdateTripPage = () => {
           </Container>
         </>
       )}
-    </>
+    </div>
   );
 };
 export default UpdateTripPage;
