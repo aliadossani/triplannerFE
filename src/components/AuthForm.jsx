@@ -44,7 +44,7 @@ const AuthForm = ({ isLogin = false }) => {
   };
 
   return (
-    <Container size="xs" mt={"10%"} >
+    <Container>
       <form onSubmit={handleSubmit} className={classes.formCtn}>
         {!isLogin ? (
           <>
