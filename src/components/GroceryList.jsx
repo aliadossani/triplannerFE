@@ -77,22 +77,20 @@ const GroceryList = ({
             <h3>Grocery List</h3>
           </Text>
 
-          <Container maw="60vw">
+          <Container maw="70vw">
             <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
           </Container>
           {groceries.map((grocery, index) => (
-            <Center display="flex" key={index} mt="1rem">
-              <Container>
+            <Container /* display="flex" */ key={index} mt="1rem">
+              <Center>
                 <Image src={grocery?.image} radius="md" mah={50} maw={50} />
-              </Container>
-              <Container>
-                <Text size="sm" c="dimmed">
-                  <h3>
-                    {grocery.name} ({grocery.quantity})
-                  </h3>
-                </Text>
-              </Container>
-              <Container>
+              </Center>
+              <Text size="sm" c="dimmed">
+                <h3>
+                  {grocery.name} ({grocery.quantity})
+                </h3>
+              </Text>
+              <Center>
                 <Text size="sm">
                   <p
                     className={
@@ -104,12 +102,10 @@ const GroceryList = ({
                     {grocery.label}
                   </p>
                 </Text>
-              </Container>
-              <Container>
-                <IconEdit onClick={() => handleEditGroceryModal(grocery)} />
-                <IconTrash onClick={() => handleDeleteGrocery(grocery._id)} />
-              </Container>
-            </Center>
+              </Center>
+              <IconEdit onClick={() => handleEditGroceryModal(grocery)} />
+              <IconTrash onClick={() => handleDeleteGrocery(grocery._id)} />
+            </Container>
           ))}
         </Container>
       ) : (

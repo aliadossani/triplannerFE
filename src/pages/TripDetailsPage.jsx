@@ -139,21 +139,20 @@ const TripDetailsPage = () => {
   return trip ? (
     <Container size="md">
       <Card shadow="sm" padding="lg" mb="sm" mt="sm" radius="md" withBorder>
-        <Image src={trip.image} radius="md" mah={200} maw="100%" />
-        <Card.Section display="flex">
-          <Container size="md" pt="1.5rem" miw="40%">
+        <Image src={trip.image} radius="md" mah="20vw" />
+        <Card.Section /* display="flex" */>
+          <Container size="md" pt="1.5rem">
             <Text size="sm" c="dimmed">
               <h3>{trip.title}</h3>
               <h4>{trip.description}</h4>
               <h4>{trip.destination}</h4>
             </Text>
           </Container>
-          <Container display="flex" size="md" miw="10%" pt="7rem">
+          <Container size="md" pt="1rem">
             <IconEdit onClick={() => navigate(`/trips/${tripId}/update`)} />
-            <Space w="md" />
             <IconTrash onClick={handleDeleteTrip} />
           </Container>
-          <Container size="md" pt="1rem" miw="40%">
+          <Container size="md" pt="1rem">
             <ParticipantList trip={trip} />
           </Container>
         </Card.Section>
