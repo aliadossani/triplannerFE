@@ -9,6 +9,8 @@ const GroceryList = ({
   handleDeleteGrocery,
   handleEditGroceryModal,
   handleAddGrocery,
+  groceryAdded,
+  setGroceryAdded,
 }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [timeoutId, setTimeoutId] = useState();
@@ -41,7 +43,13 @@ const GroceryList = ({
   useEffect(() => {
     // Call the asynchronous function inside useEffect
     fetchGroceries();
-  }, [tripId, handleDeleteGrocery, handleEditGroceryModal, handleAddGrocery]); // Make sure to include dependencies
+  }, [
+    tripId,
+    handleDeleteGrocery,
+    handleEditGroceryModal,
+    handleAddGrocery,
+    groceryAdded,
+  ]); // Make sure to include dependencies
 
   useEffect(() => {
     clearTimeout(timeoutId);
@@ -51,10 +59,15 @@ const GroceryList = ({
           fetchGroceries(searchTerm);
         }, 300)
       );
+    }
+    if (groceryAdded) {
+      setSearchTerm("");
+      fetchGroceries();
+      setGroceryAdded(false);
     } else {
       fetchGroceries();
     }
-  }, [searchTerm]);
+  }, [searchTerm, groceryAdded]);
 
   return (
     <div>

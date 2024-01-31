@@ -1,14 +1,27 @@
 import { useState } from "react";
-import { TextInput, Button, Select } from '@mantine/core';
+import { TextInput, Button, Select } from "@mantine/core";
 
-const ChangeGrocery = ({handleAddGrocery,handleEditGrocery, userId, trip, grocery = {}}) => {
-    const {name, quantity, label, image} = grocery;
-  const [newGrocery, setNewGrocery] = useState({ name: name || '', quantity: quantity || '', label: label || '', image: image || '' });
+const ChangeGrocery = ({
+  handleAddGrocery,
+  handleEditGrocery,
+  userId,
+  trip,
+  grocery = {},
+  setGroceryAdded,
+}) => {
+  const { name, quantity, label } = grocery;
+  const [newGrocery, setNewGrocery] = useState({
+    name: name || "",
+    quantity: quantity || "",
+    label: label || "",
+  });
+
 
   const handleChange = async (event) => {
     const { name, value } = event.target;
     setNewGrocery((prevGrocery) => ({ ...prevGrocery, [name]: value }));
   };
+
     return (
         <>
             <div>
@@ -28,6 +41,7 @@ const ChangeGrocery = ({handleAddGrocery,handleEditGrocery, userId, trip, grocer
                         handleEditGrocery(event, newGrocery)
                     } else {
                         handleAddGrocery(event, newGrocery)
+                        setGroceryAdded(true);
                     }
                     }}>
                     {
