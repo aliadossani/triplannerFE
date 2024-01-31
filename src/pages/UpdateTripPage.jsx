@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
 import { Button, TextInput, Container } from "@mantine/core";
 import classes from "../styles/UpdateTrip.module.css";
+import Loader from "../components/Loader";
 
 const UpdateTripPage = () => {
   const { tripId } = useParams();
@@ -110,7 +111,7 @@ const UpdateTripPage = () => {
     <div className={classes.pageCtn}>
       <h1>Update this Trip</h1>
       {loading ? (
-        <p>Loading...</p>
+        <Loader />
       ) : (
         <>
           <Container size="xs">

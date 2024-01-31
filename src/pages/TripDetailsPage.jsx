@@ -18,6 +18,7 @@ import GroceryList from "../components/GroceryList";
 import ChangeGrocery from "../components/ChangeGrocery";
 import ParticipantList from "../components/ParticipantList";
 import { useViewportSize } from "@mantine/hooks";
+import Loader from "../components/Loader";
 
 const TripDetailsPage = () => {
   const { tripId } = useParams();
@@ -202,7 +203,7 @@ const TripDetailsPage = () => {
       </Card>
     </Container>
   ) : (
-    <h2>Loading...</h2>
+    <Loader />
   );
 };
 

@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { IconEdit, IconTrash } from "@tabler/icons-react";
 import { AuthContext } from "../contexts/AuthContext";
 import classes from "../styles/TripsPage.module.css";
@@ -60,8 +60,6 @@ function TripsPage() {
     }
   };
 
-  if (tripsFetched && !trips?.length) return <>No Trips found</>;
-
   const handleSearch = (event) => {
     event.preventDefault();
     const lowerCaseQuery = searchQuery.toLowerCase();
@@ -80,6 +78,19 @@ function TripsPage() {
     setSearchResultsText("");
     navigate("/trips");
   };
+
+  if ((tripsFetched && !trips?.length) || !filteredTrips?.length)
+    return (
+      <Container size="sm">
+        <img
+          className={classes.notFoundImg}
+          src="https://img.freepik.com/free-vector/error-404-concept-landing-page_52683-19704.jpg?w=900&t=st=1706725413~exp=1706726013~hmac=dcc12fa798565fd7be30c19656ab3d648bf612262e17c44d1e7f6adbbfe45660"
+        />
+        <NavLink className={classes.notFound} to="/trips/new">
+          <Button>Create Trip</Button>
+        </NavLink>
+      </Container>
+    );
 
   return (
     <Container size="md">

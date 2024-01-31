@@ -1,12 +1,13 @@
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import { Navigate } from "react-router-dom";
+import Loader from "./Loader";
 
 const PrivateRoute = ({ children }) => {
   const { isAuthenticated, isLoading } = useContext(AuthContext);
 
   return isLoading ? (
-    <h1>Loading...</h1>
+    <Loader />
   ) : isAuthenticated ? (
     children
   ) : (

@@ -10,3 +10,14 @@
 .reloadLink:hover {
   color: black;
 }
+
+.notFoundImg {
+  height: 50vh;
+  object-fit: contain;
+}
+
+.notFound {
+  color: black;
+  display: flex;
+  flex-direction: column;
+}

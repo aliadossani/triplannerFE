@@ -1,7 +1,10 @@
 .NotFound img {
-  height: 10vw;
+  height: 50vh;
+  object-fit: contain;
 }
 
 .NotFound {
   color: black;
+  display: flex;
+  flex-direction: column;
 }
