@@ -81,6 +81,7 @@ const GroceryList = ({
             <div className={classes.groceryCard} key={index}>
               <div className={classes.cardContent}>
                 <div className={classes.groceryHeaderCtn}>
+                  <img src={grocery?.image} className={classes.groceryImage} />
                   <p className={classes.groceryName}>
                     {grocery.name} ({grocery.quantity})
                   </p>

@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Menu, Text } from "@mantine/core";
-import { IconChevronDown } from '@tabler/icons-react';
+import { IconChevronDown, IconSquareRoundedPlus } from '@tabler/icons-react';
 import appLogo from "../assets/applogo_bk.png";
 import styles from "../styles/navbar.module.css";
 import { AuthContext } from "../contexts/AuthContext";
@@ -42,17 +42,20 @@ const Navbar = () => {
     <nav>
       {isAuthenticated ? (
         <div className={styles.navbar}>
-          <NavLink to="/trips">
-            <img src={appLogo} />
-          </NavLink>
-          <NavLink to="/trips/new">
-            New Trip
-          </NavLink >
+          <div className={styles.iconContainer}>
+            <NavLink to="/trips">
+              <img src={appLogo} />
+            </NavLink>
+            <NavLink to="/trips/new" className={styles.newTrip}>
+              <IconSquareRoundedPlus />
+              New Trip
+            </NavLink >
+          </div>
           
           <Menu>
             <Menu.Target>
               <div className={styles.profileEntryContainer}>
-                <img className={styles.profileEntryImg} src={formData?.picture}/>
+                <img className={styles.profileEntryImg} src={formData?.picture || "https://cdn-icons-png.flaticon.com/512/9131/9131529.png"}/>
                 <div>
                   <Text className={styles.profileEntryText}>{formData?.username}</Text>
                   <Text className={styles.profileEntryText}>{formData?.email}</Text>
