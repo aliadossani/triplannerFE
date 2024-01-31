@@ -1,7 +1,15 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { IconEdit, IconTrash } from "@tabler/icons-react";
-import { Modal, Button } from "@mantine/core";
+import {
+  Modal,
+  Button,
+  Container,
+  Card,
+  Image,
+  Text,
+  Center,
+} from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { AuthContext } from "../contexts/AuthContext";
 import classes from "../styles/TripDetailsPage.module.css";
@@ -129,58 +137,53 @@ const TripDetailsPage = () => {
   };
 
   return trip ? (
-    <>
-      <div className={classes.headerContainer}>
-        <div className={classes.tripImageContainer}>
-          <img src={trip.image} className={classes.tripImage} />
-        </div>
-        <div className={classes.headerContent}>
-          <h3>{trip.title}</h3>
-          <h4>{trip.description}</h4>
-          <h4>{trip.destination}</h4>
-        </div>
-        <div>
-          <IconEdit
-            className={classes.ctaBtn}
-            onClick={() => navigate(`/trips/${tripId}/update`)}
+    <Container size="md">
+      <Card shadow="sm" padding="lg" mb="sm" mt="sm" radius="md" withBorder>
+        <Card.Section flex="row">
+          <Image src={trip.image} radius="md" mah={200} maw="100%" />
+          <Text size="sm" c="dimmed">
+            <h3>{trip.title}</h3>
+            <h4>{trip.description}</h4>
+            <h4>{trip.destination}</h4>
+          </Text>
+          <IconEdit onClick={() => navigate(`/trips/${tripId}/update`)} />
+          <IconTrash onClick={handleDeleteTrip} />
+          <ParticipantList trip={trip} />
+          <GroceryList
+            handleDeleteGrocery={handleDeleteGrocery}
+            handleEditGroceryModal={handleEditGroceryModal}
+            handleAddGrocery={handleAddGrocery}
+            groceryAdded={groceryAdded}
+            setGroceryAdded={setGroceryAdded}
           />
-          <IconTrash className={classes.ctaBtn} onClick={handleDeleteTrip} />
-        </div>
-      </div>
-      <ParticipantList trip={trip} />
-      <GroceryList
-        handleDeleteGrocery={handleDeleteGrocery}
-        handleEditGroceryModal={handleEditGroceryModal}
-        handleAddGrocery={handleAddGrocery}
-        groceryAdded={groceryAdded}
-        setGroceryAdded={setGroceryAdded}
-      />
 
-      <Modal
-        opened={opened}
-        title="Grocery Item"
-        centered
-        onClose={() => {
-          close();
-          setGrocery({});
-        }}
-      >
-        <ChangeGrocery
-          trip={trip}
-          handleAddGrocery={handleAddGrocery}
-          handleEditGrocery={handleEditGrocery}
-          userId={userId}
-          grocery={grocery}
-          setGroceryAdded={setGroceryAdded}
-        />
-      </Modal>
-      <Button mr="sm" onClick={open}>
-        Add grocery
-      </Button>
-      <Button onClick={() => navigate(`/trips/${tripId}/shoppinglist`)}>
-        Print the shopping list
-      </Button>
-    </>
+          <Modal
+            opened={opened}
+            title="Grocery Item"
+            centered
+            onClose={() => {
+              close();
+              setGrocery({});
+            }}
+          >
+            <ChangeGrocery
+              trip={trip}
+              handleAddGrocery={handleAddGrocery}
+              handleEditGrocery={handleEditGrocery}
+              userId={userId}
+              grocery={grocery}
+              setGroceryAdded={setGroceryAdded}
+            />
+          </Modal>
+          <Button mr="sm" onClick={open}>
+            Add grocery
+          </Button>
+          <Button onClick={() => navigate(`/trips/${tripId}/shoppinglist`)}>
+            Print the shopping list
+          </Button>
+        </Card.Section>
+      </Card>
+    </Container>
   ) : (
     <h2>Loading...</h2>
   );
