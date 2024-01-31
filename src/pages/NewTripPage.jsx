@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
-import { Button, TextInput } from "@mantine/core";
+import { Button, TextInput, Container } from "@mantine/core";
 import classes from "../styles/NewTrip.module.css";
 
 const NewTripPage = () => {
@@ -13,8 +13,8 @@ const NewTripPage = () => {
   const { fetchWithToken } = useContext(AuthContext);
   const navigate = useNavigate();
 
-const {userId} = useContext(AuthContext);
-const [selectedParticipants, setSelectedParticipants] = useState([userId]); // state to store list of selected participants from the form
+  const { userId } = useContext(AuthContext);
+  const [selectedParticipants, setSelectedParticipants] = useState([userId]); // state to store list of selected participants from the form
 
   // Fetch users from DB
   const fetchUsers = async () => {
@@ -47,7 +47,12 @@ const [selectedParticipants, setSelectedParticipants] = useState([userId]); // s
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const tripToCreate = { title, image, destination, participants: selectedParticipants };
+    const tripToCreate = {
+      title,
+      image,
+      destination,
+      participants: selectedParticipants,
+    };
     console.log(tripToCreate);
 
     try {
@@ -67,50 +72,59 @@ const [selectedParticipants, setSelectedParticipants] = useState([userId]); // s
   return (
     <>
       <h1>Create a New Trip</h1>
-      <form onSubmit={handleSubmit} className={classes.formCtn} action="submit">
-        <TextInput
-          label="Title:"
-          name="title"
-          value={title}
-          onChange={(event) => setTitle(event.target.value)}
-        />
-        <TextInput
-          label="Image:"
-          name="image"
-          value={image}
-          onChange={(event) => setImage(event.target.value)}
-        />
-        <TextInput
-          label="Description:"
-          name="descriprion"
-          value={description}
-          onChange={(event) => setDescription(event.target.value)}
-        />
-        <TextInput
-          label="Destination:"
-          name="destination"
-          value={destination}
-          onChange={(event) => setDestination(event.target.value)}
-        />
-        <>
-          <p>Select Participants:</p>
-          {participants.map((participant) => (
-            <div key={participant._id}>
-              <input
-                type="checkbox"
-                id={participant._id}
-                disabled={participant._id === userId}
-                checked={participant._id === userId || selectedParticipants.includes(participant._id)}
-                onChange={() => handleCheckboxChange(participant._id)}
-              />
-              <label htmlFor={participant._id}>{participant.username}</label>
-            </div>
-          ))}
-        </>
-        <Button mt="md" fullWidth type="submit">
-          Create New Trip
-        </Button>
-      </form>
+      <Container size="xs">
+        <form
+          onSubmit={handleSubmit}
+          className={classes.formCtn}
+          action="submit"
+        >
+          <TextInput
+            label="Title:"
+            name="title"
+            value={title}
+            onChange={(event) => setTitle(event.target.value)}
+          />
+          <TextInput
+            label="Image:"
+            name="image"
+            value={image}
+            onChange={(event) => setImage(event.target.value)}
+          />
+          <TextInput
+            label="Description:"
+            name="descriprion"
+            value={description}
+            onChange={(event) => setDescription(event.target.value)}
+          />
+          <TextInput
+            label="Destination:"
+            name="destination"
+            value={destination}
+            onChange={(event) => setDestination(event.target.value)}
+          />
+          <>
+            <p>Select Participants:</p>
+            {participants.map((participant) => (
+              <div key={participant._id}>
+                <input
+                  type="checkbox"
+                  id={participant._id}
+                  disabled={participant._id === userId}
+                  checked={
+                    participant._id === userId ||
+                    selectedParticipants.includes(participant._id)
+                  }
+                  onChange={() => handleCheckboxChange(participant._id)}
+                />
+                <label htmlFor={participant._id}>{participant.username}</label>
+              </div>
+            ))}
+          </>
+          <Button mt="md" fullWidth type="submit">
+            Create New Trip
+          </Button>
+        </form>
+      </Container>
     </>
   );
 };
