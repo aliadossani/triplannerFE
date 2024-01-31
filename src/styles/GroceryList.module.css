@@ -62,3 +62,9 @@
   margin-left: 2rem;
   padding-left: 16px;
 }
+
+.groceryImage {
+  margin-right: 10px;
+  width: 40px;
+  object-fit: contain;
+}
