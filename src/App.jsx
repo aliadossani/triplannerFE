@@ -20,7 +20,7 @@ import ChatBot from 'react-simple-chatbot';
 
 function App() {
   return (
-    <>
+    <div className='appContainer'>
       <Navbar />
       
       <Routes>
@@ -169,7 +169,7 @@ function App() {
       />
       <hr />
       <Footer />
-    </>
+    </div>
   );
 }
 

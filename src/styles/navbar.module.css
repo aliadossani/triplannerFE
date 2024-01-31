@@ -1,7 +1,11 @@
+.navbarParent {
+  height:8%
+}
+
 .navbar {
   display: flex;
-  height: 4rem;
-  background-color: aqua;
+  height: 100%; 
+  background-color:var(--primaryBlue);
   color: white;
   flex-direction: row;
   justify-content: space-between;
@@ -13,6 +17,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  color:white;
 }
 
 .iconContainer {
@@ -27,6 +32,10 @@
 
 .navlinkBtn {
   margin: 5px;
+  background-color:white;
+  color:var(--primaryBlue);
+  /* font-weight: bold; */
+  font-size: 1rem;
 }
 
 .profileCtn{
@@ -46,12 +55,12 @@
 }
 
 .profileEntryText {
-  color:#0e1111;
+  color:white;
 }
 
 .profileEntryIcon {
   margin-left:10px;
-  color:#0e1111;
+  color:white;
 }
 
 @media print {

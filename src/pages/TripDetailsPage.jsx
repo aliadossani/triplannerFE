@@ -9,10 +9,10 @@ import {
   Image,
   Text,
   Center,
+  Space,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { AuthContext } from "../contexts/AuthContext";
-import classes from "../styles/TripDetailsPage.module.css";
 import GroceryList from "../components/GroceryList";
 import ChangeGrocery from "../components/ChangeGrocery";
 import ParticipantList from "../components/ParticipantList";
@@ -139,48 +139,60 @@ const TripDetailsPage = () => {
   return trip ? (
     <Container size="md">
       <Card shadow="sm" padding="lg" mb="sm" mt="sm" radius="md" withBorder>
-        <Card.Section flex="row">
-          <Image src={trip.image} radius="md" mah={200} maw="100%" />
-          <Text size="sm" c="dimmed">
-            <h3>{trip.title}</h3>
-            <h4>{trip.description}</h4>
-            <h4>{trip.destination}</h4>
-          </Text>
-          <IconEdit onClick={() => navigate(`/trips/${tripId}/update`)} />
-          <IconTrash onClick={handleDeleteTrip} />
-          <ParticipantList trip={trip} />
-          <GroceryList
-            handleDeleteGrocery={handleDeleteGrocery}
-            handleEditGroceryModal={handleEditGroceryModal}
-            handleAddGrocery={handleAddGrocery}
-            groceryAdded={groceryAdded}
-            setGroceryAdded={setGroceryAdded}
-          />
-
-          <Modal
-            opened={opened}
-            title="Grocery Item"
-            centered
-            onClose={() => {
-              close();
-              setGrocery({});
-            }}
-          >
-            <ChangeGrocery
-              trip={trip}
+        <Image src={trip.image} radius="md" mah={200} maw="100%" />
+        <Card.Section display="flex">
+          <Container size="md" pt="1.5rem" miw="40%">
+            <Text size="sm" c="dimmed">
+              <h3>{trip.title}</h3>
+              <h4>{trip.description}</h4>
+              <h4>{trip.destination}</h4>
+            </Text>
+          </Container>
+          <Container display="flex" size="md" miw="10%" pt="7rem">
+            <IconEdit onClick={() => navigate(`/trips/${tripId}/update`)} />
+            <Space w="md" />
+            <IconTrash onClick={handleDeleteTrip} />
+          </Container>
+          <Container size="md" pt="1rem" miw="40%">
+            <ParticipantList trip={trip} />
+          </Container>
+        </Card.Section>
+        <Card.Section>
+          <Container size="md" pt="1rem">
+            <GroceryList
+              handleDeleteGrocery={handleDeleteGrocery}
+              handleEditGroceryModal={handleEditGroceryModal}
               handleAddGrocery={handleAddGrocery}
-              handleEditGrocery={handleEditGrocery}
-              userId={userId}
-              grocery={grocery}
+              groceryAdded={groceryAdded}
               setGroceryAdded={setGroceryAdded}
             />
-          </Modal>
-          <Button mr="sm" onClick={open}>
-            Add grocery
-          </Button>
-          <Button onClick={() => navigate(`/trips/${tripId}/shoppinglist`)}>
-            Print the shopping list
-          </Button>
+            <Modal
+              opened={opened}
+              title="Grocery Item"
+              centered
+              onClose={() => {
+                close();
+                setGrocery({});
+              }}
+            >
+              <ChangeGrocery
+                trip={trip}
+                handleAddGrocery={handleAddGrocery}
+                handleEditGrocery={handleEditGrocery}
+                userId={userId}
+                grocery={grocery}
+                setGroceryAdded={setGroceryAdded}
+              />
+            </Modal>
+
+            <Center mt="2rem" mb="2rem">
+              <Button onClick={open}>Add grocery</Button>
+              <Space w="md" />
+              <Button onClick={() => navigate(`/trips/${tripId}/shoppinglist`)}>
+                Print the shopping list
+              </Button>
+            </Center>
+          </Container>
         </Card.Section>
       </Card>
     </Container>

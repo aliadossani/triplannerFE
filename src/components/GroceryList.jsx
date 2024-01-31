@@ -1,7 +1,7 @@
 import { IconEdit, IconTrash } from "@tabler/icons-react";
 import Search from "../components/Search";
 import classes from "../styles/GroceryList.module.css";
-import { Center } from "@mantine/core";
+import { Center, Container, Image, Text } from "@mantine/core";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -70,23 +70,30 @@ const GroceryList = ({
   }, [searchTerm, groceryAdded]);
 
   return (
-    <div>
+    <Container>
       {groceries.length ? (
-        <>
-          <h3 className={classes.header}>Grocery List</h3>
-          <Center>
+        <Container>
+          <Text size="sm" c="dimmed">
+            <h3>Grocery List</h3>
+          </Text>
+
+          <Container maw="60vw">
             <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-          </Center>
+          </Container>
           {groceries.map((grocery, index) => (
-            <div className={classes.groceryCard} key={index}>
-              <div className={classes.cardContent}>
-                <div className={classes.groceryHeaderCtn}>
-                  <img src={grocery?.image} className={classes.groceryImage} />
-                  <p className={classes.groceryName}>
+            <Center display="flex" key={index} mt="1rem">
+              <Container>
+                <Image src={grocery?.image} radius="md" mah={50} maw={50} />
+              </Container>
+              <Container>
+                <Text size="sm" c="dimmed">
+                  <h3>
                     {grocery.name} ({grocery.quantity})
-                  </p>
-                </div>
-                <div className={classes.groceryLabelCtn}>
+                  </h3>
+                </Text>
+              </Container>
+              <Container>
+                <Text size="sm">
                   <p
                     className={
                       grocery.label === "Needs to be purchased"
@@ -96,30 +103,26 @@ const GroceryList = ({
                   >
                     {grocery.label}
                   </p>
-                </div>
-              </div>
-              <div>
-                <IconEdit
-                  className={classes.ctaBtn}
-                  onClick={() => handleEditGroceryModal(grocery)}
-                />
-                <IconTrash
-                  className={classes.ctaBtn}
-                  onClick={() => handleDeleteGrocery(grocery._id)}
-                />
-              </div>
-            </div>
+                </Text>
+              </Container>
+              <Container>
+                <IconEdit onClick={() => handleEditGroceryModal(grocery)} />
+                <IconTrash onClick={() => handleDeleteGrocery(grocery._id)} />
+              </Container>
+            </Center>
           ))}
-        </>
+        </Container>
       ) : (
-        <>
+        <Container>
           <Center>
             <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
           </Center>
-          <p>No groceries available.</p>
-        </>
+          <Text size="sm" c="dimmed">
+            <h3>No groceries available.</h3>
+          </Text>
+        </Container>
       )}
-    </div>
+    </Container>
   );
 };
 
