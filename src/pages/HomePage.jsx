@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import appLogo from "../assets/applogo_color.png";
 import image1 from "../assets/image1.jpeg"
+import image2 from "../assets/image2.jpeg"
+import image3 from "../assets/image3.jpeg"
 import { NavLink } from "react-router-dom";
 import styles from "../styles/Homepage.module.css";
 import { Button } from "@mantine/core";
@@ -57,10 +59,10 @@ const HomePage = () => {
                   As you learn about local cuisines and specialties, add the ingredients to your virtual basket 
                   with a simple click. The transition from planning to purchasing has never been smoother.</p>
             </div>  
-            <img src={image1} />
+            <img src={image2} />
           </div>
           <div className={styles.descriptionSection}>
-            <img src={image1} />
+            <img src={image3} />
             <div className={styles.textCtn}>
                 <h2>User-Friendly Interface</h2>
                 <p>WanderBasket's intuitive React-based interface ensures a delightful user experience. 
