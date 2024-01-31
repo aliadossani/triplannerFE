@@ -30,13 +30,14 @@ const AuthForm = ({ isLogin = false }) => {
       if (response.status === 201) {
         // The user was created successully
         navigate("/login");
-      }
-      if (response.status === 200) {
+      } else if (response.status === 200) {
         // The user was logged in successully
         const parsed = await response.json();
         console.log(parsed);
         saveToken(parsed.token);
         navigate("/trips");
+      } else {
+        alert("Please enter correct username and password")
       }
     } catch (error) {
       console.log(error);
