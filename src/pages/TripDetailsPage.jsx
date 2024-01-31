@@ -143,15 +143,15 @@ const TripDetailsPage = () => {
     <Container size="md">
       <Card shadow="sm" padding="lg" mb="sm" mt="sm" radius="md" withBorder>
         <Image src={trip.image} radius="md" mah="20vw" />
-        <SimpleGrid cols={width > 1200 ? 2 : 1}>
+        <SimpleGrid mt="1rem" cols={width > 1200 ? 2 : 1}>
           <div>
             <Text size="xl" fw={700} c="darkText">
               {trip.title}
             </Text>
-            <Text size="lg" fw={600} c="darkText">
+            <Text mt="1rem" size="lg" fw={600} c="darkText">
               {trip.description}
             </Text>
-            <Text size="lg" fw={600} c="darkText">
+            <Text mt="1rem" size="lg" fw={600} c="darkText">
               {trip.destination}
             </Text>
             <Space h="md" />
