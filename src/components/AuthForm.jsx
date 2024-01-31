@@ -49,15 +49,15 @@ const AuthForm = ({ isLogin = false }) => {
         {!isLogin ? (
           <>
           <TextInput label="Your Photo:" name="photo" value={picture} onChange={(event) => setPicture(event.target.value)} />
-          <TextInput label="Email:" name="email" value={email} required="true" onChange={(event) => setEmail(event.target.value)} />
-          <TextInput label="Password:" name="password" type="password" required="true"  value={password} onChange={(event) => setPassword(event.target.value)} />
-          <TextInput label="Username:" name="username" required="true"  value={username} onChange={(event) => setUsername(event.target.value)} />
+          <TextInput label="Email:" name="email" value={email} required onChange={(event) => setEmail(event.target.value)} />
+          <TextInput label="Password:" name="password" type="password" required value={password} onChange={(event) => setPassword(event.target.value)} />
+          <TextInput label="Username:" name="username" required  value={username} onChange={(event) => setUsername(event.target.value)} />
           </>
         ) : (
           <>
-          <TextInput label="Email:" name="email" value={email} required="true" onChange={(event) => setEmail(event.target.value)} />
+          <TextInput label="Email:" name="email" value={email} required onChange={(event) => setEmail(event.target.value)} />
 
-          <TextInput label="Password:" name="password" type="password" required="true"  value={password} onChange={(event) => setPassword(event.target.value)} />
+          <TextInput label="Password:" name="password" type="password" required  value={password} onChange={(event) => setPassword(event.target.value)} />
           </>
         )}
         <Button mt="md" fullWidth type="submit">
