@@ -1,7 +1,14 @@
 import { IconEdit, IconTrash } from "@tabler/icons-react";
 import Search from "../components/Search";
 import classes from "../styles/GroceryList.module.css";
-import { Center, Container, Image, SimpleGrid, Text } from "@mantine/core";
+import {
+  Center,
+  Container,
+  Image,
+  SimpleGrid,
+  Space,
+  Text,
+} from "@mantine/core";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -84,6 +91,7 @@ const GroceryList = ({
             <SimpleGrid key={index} mt="1rem" cols={3}>
               <Center>
                 <Image src={grocery?.image} radius="md" mah={50} maw={50} />
+                <Space w="md" />
                 <Text size="sm" c="darkText">
                   <h3>
                     {grocery.name} ({grocery.quantity})
