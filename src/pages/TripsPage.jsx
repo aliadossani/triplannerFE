@@ -13,11 +13,11 @@ function TripsPage() {
   const [searchResultsText, setSearchResultsText] = useState("");
 
   const navigate = useNavigate();
-  const { fetchWithToken } = useContext(AuthContext);
+  const { fetchWithToken, userId } = useContext(AuthContext);
 
   const fetchTrips = async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/trips`);
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/trips/user/${userId}`);
       if (response.ok) {
         const tripData = await response.json();
         setTrips(tripData);
