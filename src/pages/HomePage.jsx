@@ -50,7 +50,7 @@ const HomePage = () => {
                 save time, and indulge in stress-free shopping with the perfect grocery companion.</p>
             </div>
           </div>
-          <div className={styles.descriptionSection}>
+          <div className={`${styles.descriptionSection} ${styles.reversed}`}>
             <div className={styles.textCtn}>
                 <h2>Discover the Unseen</h2>
                 <p>Effortlessly transition from exploration to shopping with WanderBasket's seamless integration. 
