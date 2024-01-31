@@ -18,31 +18,6 @@ import appLogo from "./assets/applogo_color.png";
 
 import ChatBot from 'react-simple-chatbot';
 
-const Review = ({ steps}) => {
-  console.warn(steps);
-  return (
-    <div style={{ width: '100%' }}>
-      <h3>Summary</h3>
-      {/* <table>
-        <tbody>
-          <tr>
-            <td>Name</td>
-            <td>{name.value}</td>
-          </tr>
-          <tr>
-            <td>Gender</td>
-            <td>{gender.value}</td>
-          </tr>
-          <tr>
-            <td>Age</td>
-            <td>{age.value}</td>
-          </tr>
-        </tbody>
-      </table> */}
-    </div>
-  );
-}
-
 function App() {
   return (
     <>
@@ -110,6 +85,10 @@ function App() {
           background: "aqua",
           color: "black"
         }}
+        bubbleOptionStyle={{
+          background: "aqua",
+          color: "black"
+        }}
         headerTitle={"Plan your trip with us!"}
         steps={[
           {
@@ -120,10 +99,20 @@ function App() {
           {
             id: '1',
             options: [
-              { value: 'yes', label: 'Yes', trigger: '2' },
+              { value: 'yes', label: 'Yes', trigger: 'end-message-accept' },
               { value: 'no', label: 'No', trigger: 'end-message-reject' },
             ],
           },
+          {
+            id: 'end-message-accept',
+            message: 'Sure, ',
+            trigger: '2'
+          },
+          {
+            id: 'end-message-accept',
+            message: 'How can I assist you?',
+            trigger: '2'
+          },  
           {
             id: '2',
             user: true,
@@ -131,30 +120,51 @@ function App() {
           },
           {
             id: '3',
-            message: 'Nice! ',
-            trigger: '4',
+            message: 'Certainly! Here is a general list of essential and versatile items that you can consider taking along for a trip: Fruits, Vegetables, Bread, Hard Boiled eggs, Salt, Instant Noodles, Ketchup ',
+            trigger:'4'
           },
           {
             id: '4',
             user: true,
-            trigger: 'review',
+            trigger: '5',
           },
+          
           {
-            id: 'review',
-            component: <Review />,
-            asMessage: true,
-            trigger: 'end-message',
+            id: '5',
+            message: 'You are welcome! If you have any more questions, feel free to ask. Safe travels and enjoy your trip!',
+            trigger:'end-message',
           },
           {
             id: 'end-message-reject',
-            message: 'Have a nice day!',
-            end: true,
+            message: 'How can I assist you?',
+            trigger:'7',
+          },
+          {
+            id: '7',
+            user: true,
+            trigger: '8',
+          },
+          {
+            id: '8',
+            message: "WanderBasket is your ultimate travel grocery companion",
+            trigger: "9"
+          },
+          {
+            id: '9',
+            message: "Do you need any more help",
+            trigger: '10',
+          },
+          {
+            id: '10',
+            user: true,
+            trigger: 'end-message',
           },
           {
             id: 'end-message',
-            message: 'Have a nice trip!',
+            message: 'Thanks for visiting our website!',
             end: true,
           },
+
         ]}
       />
       <hr />
