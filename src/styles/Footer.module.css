@@ -5,13 +5,15 @@
   justify-content: center;
   gap: 40px;
   width: 100%;
-  height: 3rem;
+  height: 8%;
   background-color: var(--primaryBlue);
   padding-top: 0.6rem;
   padding-bottom: 0.6rem;
   bottom: 0;
   color: white;
-  position: fixed;
+  font-size: 1rem;
+  font-weight: 550;
+  /* position: fixed; */
 }
 
 .link{

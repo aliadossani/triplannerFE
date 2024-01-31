@@ -39,7 +39,7 @@ const Navbar = () => {
   }
 
   return (
-    <nav>
+    <div className={styles.navbarParent}>
       {isAuthenticated ? (
         <div className={styles.navbar}>
           <div className={styles.iconContainer}>
@@ -98,7 +98,7 @@ const Navbar = () => {
           </div>
         </div>
       )}
-    </nav>
+    </div>
   );
 }; 
 

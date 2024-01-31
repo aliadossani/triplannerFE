@@ -23,7 +23,7 @@ import ActionProvider from './chatbot/ActionProvider.jsx'; */
 
 function App() {
   return (
-    <>
+    <div className='appContainer'>
       <Navbar />
       {/* <Chatbot
         config={config}
@@ -81,9 +81,8 @@ function App() {
         />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
-      <hr />
       <Footer />
-    </>
+    </div>
   );
 }
 

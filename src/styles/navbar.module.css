@@ -1,6 +1,10 @@
+.navbarParent {
+  height:8%
+}
+
 .navbar {
   display: flex;
-  height: 4rem;
+  height: 100%; 
   background-color:var(--primaryBlue);
   color: white;
   flex-direction: row;
@@ -28,10 +32,10 @@
 
 .navlinkBtn {
   margin: 5px;
-  background-color:#e8f3f3ff;
+  background-color:white;
   color:var(--primaryBlue);
-  font-weight: bolder;
-  font-size: large;
+  /* font-weight: bold; */
+  font-size: 1rem;
 }
 
 .profileCtn{
