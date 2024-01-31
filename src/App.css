@@ -19,3 +19,11 @@ body, html, #root {
 .appContainer {
   height: 100%; 
 }
+
+.rsc-header {
+  background: aqua!important;
+  color: black!important;
+  svg {
+    fill: black!important;
+  }
+}
