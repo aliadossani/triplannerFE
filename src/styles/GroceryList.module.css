@@ -1,34 +1,3 @@
-.groceryCard {
-  display: flex;
-  border-radius: 8px;
-  padding: 16px;
-  margin-bottom: 16px;
-  border-bottom: 1px solid #f3f2f2;
-}
-
-.groceryHeaderCtn {
-  display: flex;
-  margin-left: 2rem;
-  margin-right: 2rem;
-}
-
-.cardContent {
-  flex: 1;
-}
-.groceryName {
-  font-size: 18px;
-  font-weight: bold;
-  margin: 0px;
-  padding: 10px;
-}
-
-.groceryQuantity {
-  font-size: 18px;
-  color: #0e1111;
-  margin: 0px;
-  padding: 10px;
-}
-
 .groceryGreenLabel {
   text-align: left;
   margin-left: 2rem;
@@ -51,20 +20,4 @@
   border-radius: 5px;
   width: 180px;
   text-align: center;
-}
-
-.ctaBtn {
-  margin: 10px;
-}
-
-.header {
-  text-align: left;
-  margin-left: 2rem;
-  padding-left: 16px;
-}
-
-.groceryImage {
-  margin-right: 10px;
-  width: 40px;
-  object-fit: contain;
 }
