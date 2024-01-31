@@ -141,17 +141,17 @@ const TripDetailsPage = () => {
       <Card shadow="sm" padding="lg" mb="sm" mt="sm" radius="md" withBorder>
         <Image src={trip.image} radius="md" mah="20vw" />
         <Card.Section /* display="flex" */>
-          <Container size="md" pt="1.5rem">
+          <Center size="md" pt="1.5rem">
             <Text size="sm" c="dimmed">
               <h3>{trip.title}</h3>
               <h4>{trip.description}</h4>
               <h4>{trip.destination}</h4>
             </Text>
-          </Container>
-          <Container size="md" pt="1rem">
+            <Space w="md" />
             <IconEdit onClick={() => navigate(`/trips/${tripId}/update`)} />
             <IconTrash onClick={handleDeleteTrip} />
-          </Container>
+          </Center>
+
           <Container size="md" pt="1rem">
             <ParticipantList trip={trip} />
           </Container>
