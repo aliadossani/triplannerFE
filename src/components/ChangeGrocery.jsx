@@ -9,11 +9,12 @@ const ChangeGrocery = ({
   grocery = {},
   setGroceryAdded,
 }) => {
-  const { name, quantity, label } = grocery;
+  const { name, quantity, label, image } = grocery;
   const [newGrocery, setNewGrocery] = useState({
     name: name || "",
     quantity: quantity || "",
     label: label || "",
+    image: image || "",
   });
 
 
