@@ -11,6 +11,7 @@
   padding-bottom: 0.6rem;
   bottom: 0;
   color: white;
+  position: fixed;
 }
 
 .link{

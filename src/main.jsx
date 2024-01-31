@@ -11,7 +11,7 @@ import { createTheme, MantineProvider } from "@mantine/core";
 
 const theme = createTheme({
   black: "#3b4948FF",
-  primaryColor: "primaryBlue",
+  primaryColor: "secondaryBlue",
   colors: {
     primaryBlue: generateColors("#27BFD3FF"),
     secondaryBlue: generateColors("#209CD8FF"),

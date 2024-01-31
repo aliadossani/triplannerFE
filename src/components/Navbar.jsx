@@ -85,14 +85,14 @@ const Navbar = () => {
             <img src={appLogo} />
           </NavLink>
           <div>
-            <NavLink className={styles.navlinkBtn} to="/signup">
-              <Button type="button">
-                Signup
+            <NavLink to="/signup">
+              <Button type="button" className={styles.navlinkBtn}>
+                Sign Up
               </Button>
             </NavLink>
-            <NavLink className={styles.navlinkBtn} to="/login">
-              <Button type="button">
-                Login
+            <NavLink to="/login">
+              <Button className={styles.navlinkBtn} type="button">
+                Log In
               </Button>
             </NavLink>
           </div>
