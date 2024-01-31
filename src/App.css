@@ -13,3 +13,11 @@
 hr {
   border: 1px solid white;
 }
+
+.rsc-header {
+  background: aqua!important;
+  color: black!important;
+  svg {
+    fill: black!important;
+  }
+}

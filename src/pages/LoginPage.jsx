@@ -1,6 +1,7 @@
 import AuthForm from "../components/AuthForm";
 import appLogo from "../assets/applogo_color.png";
-import styles from "../styles/LoginPage.module.css";
+import styles from "../styles/LogInPage.module.css";
+
 
 const LoginPage = () => {
   return(

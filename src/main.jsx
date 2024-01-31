@@ -23,13 +23,11 @@ const theme = createTheme({
 });
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <AuthContextProvider>
-        <MantineProvider theme={theme}>
-          <App />
-        </MantineProvider>
-      </AuthContextProvider>
-    </BrowserRouter>
-  </React.StrictMode>
+  <BrowserRouter>
+    <AuthContextProvider>
+      <MantineProvider theme={theme}>
+        <App />
+      </MantineProvider>
+    </AuthContextProvider>
+  </BrowserRouter>
 );
