@@ -1,7 +1,7 @@
 import { IconEdit, IconTrash } from "@tabler/icons-react";
 import Search from "../components/Search";
 import classes from "../styles/GroceryList.module.css";
-import { Center, Container, Image, Text } from "@mantine/core";
+import { Center, Container, Image, Space, Text } from "@mantine/core";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -85,11 +85,16 @@ const GroceryList = ({
               <Center>
                 <Image src={grocery?.image} radius="md" mah={50} maw={50} />
               </Center>
-              <Text size="sm" c="dimmed">
-                <h3>
-                  {grocery.name} ({grocery.quantity})
-                </h3>
-              </Text>
+              <Center>
+                <Text size="sm" c="dimmed">
+                  <h3>
+                    {grocery.name} ({grocery.quantity})
+                  </h3>
+                </Text>
+                <Space w="md" />
+                <IconEdit onClick={() => handleEditGroceryModal(grocery)} />
+                <IconTrash onClick={() => handleDeleteGrocery(grocery._id)} />
+              </Center>
               <Center>
                 <Text size="sm">
                   <p
@@ -103,8 +108,6 @@ const GroceryList = ({
                   </p>
                 </Text>
               </Center>
-              <IconEdit onClick={() => handleEditGroceryModal(grocery)} />
-              <IconTrash onClick={() => handleDeleteGrocery(grocery._id)} />
             </Container>
           ))}
         </Container>
