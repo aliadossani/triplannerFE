@@ -1,23 +1,19 @@
 .groceryGreenLabel {
   text-align: left;
-  margin-left: 2rem;
-  margin-right: 2rem;
   font-size: 14px;
-  padding: 10px;
   background-color: #90ee90;
   border-radius: 5px;
-  width: 180px;
+  width: 20vw;
+  height: auto;
   text-align: center;
 }
 
 .groceryRedLabel {
   text-align: left;
-  margin-left: 2rem;
-  margin-right: 2rem;
   font-size: 14px;
-  padding: 10px;
   background-color: #fa7b7b;
   border-radius: 5px;
-  width: 180px;
+  width: 20vw;
+  height: auto;
   text-align: center;
 }

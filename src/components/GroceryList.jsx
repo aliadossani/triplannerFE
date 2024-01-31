@@ -1,7 +1,7 @@
 import { IconEdit, IconTrash } from "@tabler/icons-react";
 import Search from "../components/Search";
 import classes from "../styles/GroceryList.module.css";
-import { Center, Container, Image, Space, Text } from "@mantine/core";
+import { Center, Container, Image, SimpleGrid, Text } from "@mantine/core";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -81,21 +81,16 @@ const GroceryList = ({
             <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
           </Container>
           {groceries.map((grocery, index) => (
-            <Container /* display="flex" */ key={index} mt="1rem">
+            <SimpleGrid key={index} mt="1rem" cols={3}>
               <Center>
                 <Image src={grocery?.image} radius="md" mah={50} maw={50} />
-              </Center>
-              <Center>
                 <Text size="sm" c="dimmed">
                   <h3>
                     {grocery.name} ({grocery.quantity})
                   </h3>
                 </Text>
-                <Space w="md" />
-                <IconEdit onClick={() => handleEditGroceryModal(grocery)} />
-                <IconTrash onClick={() => handleDeleteGrocery(grocery._id)} />
               </Center>
-              <Center>
+              <Container>
                 <Text size="sm">
                   <p
                     className={
@@ -107,8 +102,12 @@ const GroceryList = ({
                     {grocery.label}
                   </p>
                 </Text>
+              </Container>
+              <Center>
+                <IconEdit onClick={() => handleEditGroceryModal(grocery)} />
+                <IconTrash onClick={() => handleDeleteGrocery(grocery._id)} />
               </Center>
-            </Container>
+            </SimpleGrid>
           ))}
         </Container>
       ) : (

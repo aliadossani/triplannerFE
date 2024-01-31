@@ -10,12 +10,14 @@ import {
   Text,
   Center,
   Space,
+  SimpleGrid,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { AuthContext } from "../contexts/AuthContext";
 import GroceryList from "../components/GroceryList";
 import ChangeGrocery from "../components/ChangeGrocery";
 import ParticipantList from "../components/ParticipantList";
+import { useViewportSize } from "@mantine/hooks";
 
 const TripDetailsPage = () => {
   const { tripId } = useParams();
@@ -25,6 +27,7 @@ const TripDetailsPage = () => {
   const { fetchWithToken, userId } = useContext(AuthContext);
   const [groceryAdded, setGroceryAdded] = useState(false);
   const navigate = useNavigate();
+  const { width } = useViewportSize();
 
   const fetchTrip = async () => {
     try {
@@ -140,22 +143,20 @@ const TripDetailsPage = () => {
     <Container size="md">
       <Card shadow="sm" padding="lg" mb="sm" mt="sm" radius="md" withBorder>
         <Image src={trip.image} radius="md" mah="20vw" />
-        <Card.Section /* display="flex" */>
-          <Center size="md" pt="1.5rem">
+        <SimpleGrid cols={width > 1200 ? 2 : 1}>
+          <div>
             <Text size="sm" c="dimmed">
               <h3>{trip.title}</h3>
               <h4>{trip.description}</h4>
               <h4>{trip.destination}</h4>
             </Text>
-            <Space w="md" />
             <IconEdit onClick={() => navigate(`/trips/${tripId}/update`)} />
             <IconTrash onClick={handleDeleteTrip} />
-          </Center>
-
-          <Container size="md" pt="1rem">
+          </div>
+          <div>
             <ParticipantList trip={trip} />
-          </Container>
-        </Card.Section>
+          </div>
+        </SimpleGrid>
         <Card.Section>
           <Container size="md" pt="1rem">
             <GroceryList
