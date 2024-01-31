@@ -3,7 +3,15 @@ import { Link, useNavigate } from "react-router-dom";
 import { IconEdit, IconTrash } from "@tabler/icons-react";
 import { AuthContext } from "../contexts/AuthContext";
 import classes from "../styles/TripsPage.module.css";
-import { Card, Image, Text, Input, Button, Container } from "@mantine/core";
+import {
+  Card,
+  Image,
+  Text,
+  Input,
+  Button,
+  Container,
+  Space,
+} from "@mantine/core";
 
 function TripsPage() {
   const [trips, setTrips] = useState([]);
@@ -93,11 +101,16 @@ function TripsPage() {
           <Card shadow="sm" padding="lg" mb="sm" mt="sm" radius="md" withBorder>
             <Card.Section>
               <Image src={trip.image} height={300} />
-              <Text size="sm" c="darkText">
-                <h3>{trip.title}</h3>
-                <h4>{trip.description}</h4>
-                <h4>{trip.destination}</h4>
+              <Text size="xl" fw={700} c="darkText">
+                {trip.title}
               </Text>
+              <Text mt="1rem" size="lg" fw={600} c="darkText">
+                {trip.description}
+              </Text>
+              <Text mt="1rem" size="lg" fw={600} c="darkText">
+                {trip.destination}
+              </Text>
+              <Space h="md" />
               <IconEdit
                 onClick={(event) => {
                   event.preventDefault();

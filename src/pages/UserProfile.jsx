@@ -118,8 +118,8 @@ const UserProfile = () => {
           <Card.Section>
             <Link key={trip._id} to={`/trips/${trip._id}`}>
               <div className={classes.tripContainer}>
-                <Text size="sm" c="darkText">
-                  <h3>{trip.title}</h3>
+                <Text size="xl" fw={700} c="darkText">
+                  {trip.title}
                 </Text>
               </div>
             </Link>
