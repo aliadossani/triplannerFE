@@ -145,7 +145,7 @@ const TripDetailsPage = () => {
         <Image src={trip.image} radius="md" mah="20vw" />
         <SimpleGrid cols={width > 1200 ? 2 : 1}>
           <div>
-            <Text size="sm" c="dimmed">
+            <Text size="sm" c="darkText">
               <h3>{trip.title}</h3>
               <h4>{trip.description}</h4>
               <h4>{trip.destination}</h4>

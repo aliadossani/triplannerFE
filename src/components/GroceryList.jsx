@@ -73,7 +73,7 @@ const GroceryList = ({
     <Container>
       {groceries.length ? (
         <Container>
-          <Text size="sm" c="dimmed">
+          <Text size="sm" c="darkText">
             <h3>Grocery List</h3>
           </Text>
 
@@ -84,7 +84,7 @@ const GroceryList = ({
             <SimpleGrid key={index} mt="1rem" cols={3}>
               <Center>
                 <Image src={grocery?.image} radius="md" mah={50} maw={50} />
-                <Text size="sm" c="dimmed">
+                <Text size="sm" c="darkText">
                   <h3>
                     {grocery.name} ({grocery.quantity})
                   </h3>
@@ -115,7 +115,7 @@ const GroceryList = ({
           <Center>
             <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
           </Center>
-          <Text size="sm" c="dimmed">
+          <Text size="sm" c="darkText">
             <h3>No groceries available.</h3>
           </Text>
         </Container>

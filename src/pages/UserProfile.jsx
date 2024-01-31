@@ -1,11 +1,11 @@
-import { useState, useEffect, useContext } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
-import { AuthContext } from '../contexts/AuthContext';
-import { TextInput, Button, Container, Card, Image, Text } from '@mantine/core';
-import classes from "../styles/UserProfile.module.css"
+import { useState, useEffect, useContext } from "react";
+import { useParams, useNavigate, Link } from "react-router-dom";
+import { AuthContext } from "../contexts/AuthContext";
+import { TextInput, Button, Container, Card, Image, Text } from "@mantine/core";
+import classes from "../styles/UserProfile.module.css";
 
 const UserProfile = () => {
-  const {userId} = useParams();
+  const { userId } = useParams();
   const [formData, setFormData] = useState({});
   const [trips, setTrips] = useState([]);
   const { fetchWithToken } = useContext(AuthContext);
@@ -18,33 +18,33 @@ const UserProfile = () => {
 
   const getUserProfile = async () => {
     try {
-      const response = await fetchWithToken(
-        `/users/${userId}`
-      );
+      const response = await fetchWithToken(`/users/${userId}`);
       if (response.ok) {
         const userData = await response.json();
         setFormData(userData);
       } else {
         alert("Couldn't fetch user");
-        console.log('Something went wrong')
+        console.log("Something went wrong");
       }
     } catch (error) {
       alert("Couldn't fetch user: " + error);
       console.log(error);
     }
-  }
+  };
 
   //Trip Count
   const getUserTripsCount = async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/trips/user/${userId}`);
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/trips/user/${userId}`
+      );
       if (response.ok) {
         const tripCountData = await response.json();
-        console.log(tripCountData)
+        console.log(tripCountData);
         setTrips(tripCountData);
       } else {
         alert("Couldn't fetch user trips count");
-        console.log('Something went wrong');
+        console.log("Something went wrong");
       }
     } catch (error) {
       alert("Couldn't fetch user trips count: " + error);
@@ -58,12 +58,12 @@ const UserProfile = () => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    console.log('Submitting form with formData:', formData);
+    console.log("Submitting form with formData:", formData);
     try {
       const response = await fetchWithToken(
         `/users/${userId}`,
         "PUT",
-        formData,
+        formData
       );
       console.warn(response);
       if (response.ok) {
@@ -71,7 +71,7 @@ const UserProfile = () => {
         navigate("/trips");
       } else {
         alert("Couldn't update user");
-        console.log('Something went wrong')
+        console.log("Something went wrong");
       }
     } catch (error) {
       alert("Couldn't update user: " + error);
@@ -80,31 +80,49 @@ const UserProfile = () => {
   };
 
   return (
-    <Container size="xs" mt={"10%"}  >
+    <Container size="xs" mt={"10%"}>
       <h2>User Profile</h2>
-      
+
       <form onSubmit={handleFormSubmit} className={classes.formCtn}>
-      <TextInput label="Username:" name="username" value= {formData?.username} onChange={handleInputChange} />
-        
-      <TextInput label="User Image:" name="picture" value= {formData?.picture} onChange={handleInputChange} />
-      {
-        formData?.picture && <img className={classes.formImg} src={formData?.picture} />
-      }
-      <Button mt="md" fullWidth type="submit">
-        Save Changes</Button>
+        <TextInput
+          label="Username:"
+          name="username"
+          value={formData?.username}
+          onChange={handleInputChange}
+        />
+
+        <TextInput
+          label="User Image:"
+          name="picture"
+          value={formData?.picture}
+          onChange={handleInputChange}
+        />
+        {formData?.picture && (
+          <img className={classes.formImg} src={formData?.picture} />
+        )}
+        <Button mt="md" fullWidth type="submit">
+          Save Changes
+        </Button>
       </form>
 
       <h5>My trips ({trips.length})</h5>
       {trips.map((trip, index) => (
-        <Card shadow="sm" padding="lg" mb="md" radius="md" withBorder key={index}>
+        <Card
+          shadow="sm"
+          padding="lg"
+          mb="md"
+          radius="md"
+          withBorder
+          key={index}
+        >
           <Card.Section>
-              <Link key={trip._id} to={`/trips/${trip._id}`}>
-                <div className={classes.tripContainer}>
-                  <Text size="sm" c="dimmed">
-                    <h3>{trip.title}</h3>
-                  </Text>
-                </div>
-              </Link>
+            <Link key={trip._id} to={`/trips/${trip._id}`}>
+              <div className={classes.tripContainer}>
+                <Text size="sm" c="darkText">
+                  <h3>{trip.title}</h3>
+                </Text>
+              </div>
+            </Link>
           </Card.Section>
         </Card>
       ))}

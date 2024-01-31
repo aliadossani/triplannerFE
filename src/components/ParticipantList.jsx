@@ -5,7 +5,7 @@ const ParticipantList = ({ trip }) => {
   if (!trip?.participants?.length) return <p>No participants available.</p>;
   return (
     <Container>
-      <Text size="sm" c="dimmed">
+      <Text size="sm" c="darkText">
         <h3>Participant List</h3>
       </Text>
 
@@ -22,7 +22,7 @@ const ParticipantList = ({ trip }) => {
               maw={50}
             />
             <Space w="md" />
-            <Text size="sm" c="dimmed">
+            <Text size="sm" c="darkText">
               <p>{participant.username}</p>
             </Text>
           </Container>

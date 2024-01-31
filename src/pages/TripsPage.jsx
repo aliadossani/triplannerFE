@@ -17,7 +17,9 @@ function TripsPage() {
 
   const fetchTrips = async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/trips/user/${userId}`);
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/trips/user/${userId}`
+      );
       if (response.ok) {
         const tripData = await response.json();
         setTrips(tripData);
@@ -91,7 +93,7 @@ function TripsPage() {
           <Card shadow="sm" padding="lg" mb="sm" mt="sm" radius="md" withBorder>
             <Card.Section>
               <Image src={trip.image} height={300} />
-              <Text size="sm" c="dimmed">
+              <Text size="sm" c="darkText">
                 <h3>{trip.title}</h3>
                 <h4>{trip.description}</h4>
                 <h4>{trip.destination}</h4>
