@@ -81,7 +81,7 @@ const UserProfile = () => {
 
   return (
     <Container size="xs">
-      <h2>User Profile</h2>
+      <h1>User Profile</h1>
 
       <form onSubmit={handleFormSubmit} className={classes.formCtn}>
         <TextInput

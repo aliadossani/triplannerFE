@@ -21,3 +21,45 @@
   display: flex;
   flex-direction: column;
 }
+
+.descriptionCtn {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  gap:20px
+}
+.tripTitle{
+  font-size: 1.4em;
+  line-height: 1.1;
+  font-weight: bold;
+  color:var(--darkText);
+  padding: 8px;
+}
+.tripDestination{
+  font-size: 1.1em;
+  font-weight: 450;
+  color:var(--darkText);
+  align-self: center;
+}
+.tripDescription {
+  align-self: center;
+  max-width: 80%;
+  font-weight: 440;
+}
+
+.destinationCtn{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.descriptionCtn img {
+  width:8%
+}
+
+.iconCtn{
+  display: flex;
+  justify-content: center;
+  gap:3%;
+}

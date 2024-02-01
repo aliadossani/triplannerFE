@@ -3,6 +3,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { IconEdit, IconTrash } from "@tabler/icons-react";
 import { AuthContext } from "../contexts/AuthContext";
 import classes from "../styles/TripsPage.module.css";
+import placeIcon from "../assets/placeIcon.png"
 import {
   Card,
   Image,
@@ -93,7 +94,7 @@ function TripsPage() {
     );
 
   return (
-    <Container size="md">
+    <Container>
       <Link to="/trips" className={classes.reloadLink}>
         <h1 onClick={handleReloadPage}>Your trips</h1>
       </Link>
@@ -112,16 +113,22 @@ function TripsPage() {
           <Card shadow="sm" padding="lg" mb="sm" mt="sm" radius="md" withBorder>
             <Card.Section>
               <Image src={trip.image} height={300} />
-              <Text size="xl" fw={700} c="darkText">
+              <div className={classes.descriptionCtn}>
+              <Text className={classes.tripTitle}>
                 {trip.title}
               </Text>
-              <Text mt="1rem" size="lg" fw={600} c="darkText">
-                {trip.description}
-              </Text>
-              <Text mt="1rem" size="lg" fw={600} c="darkText">
+              <div className={classes.destinationCtn}>
+              <img src={placeIcon}/>
+              <Text className={classes.tripDestination}>
                 {trip.destination}
               </Text>
-              <Space h="md" />
+              </div>
+              <Text className={classes.tripDescription}>
+                {trip.description}
+              </Text>
+
+              {/* <Space h="md" /> */}
+              <div className={classes.iconCtn}>
               <IconEdit
                 onClick={(event) => {
                   event.preventDefault();
@@ -131,6 +138,8 @@ function TripsPage() {
               <IconTrash
                 onClick={(event) => handleDeleteTrip(event, trip._id)}
               />
+              </div>
+              </div>
             </Card.Section>
           </Card>
         </Link>
