@@ -12,8 +12,14 @@
 }
 
 .notFoundImg {
-  height: 50vh;
+  height: 70vh;
   object-fit: contain;
+}
+
+.helpText{
+  font-weight:bolder;
+  font-size: 20px;
+  padding:10px 10px;
 }
 
 .notFound {
