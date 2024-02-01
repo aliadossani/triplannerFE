@@ -1,5 +1,6 @@
 .NotFound img {
-  height: 40vh;
+  width: 70vw;
+  max-width: 700px;
   object-fit: contain;
 }
 
