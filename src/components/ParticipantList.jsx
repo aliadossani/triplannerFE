@@ -9,15 +9,13 @@ const ParticipantList = ({ trip }) => {
 
       {trip.participants.map((participant, index) => (
         <div className={classes.participantCard} key={index}>
-          <Container display="flex">
+          <Container display="flex" className={classes.participantContainer}>
             <Image
               src={
                 participant.picture ||
                 "https://cdn-icons-png.flaticon.com/512/9131/9131529.png"
               }
               radius="md"
-              // mah={50}
-              // maw={50}
               w={50}
               h={50}
             />

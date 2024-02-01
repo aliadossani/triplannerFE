@@ -20,8 +20,7 @@ import ParticipantList from "../components/ParticipantList";
 import { useViewportSize } from "@mantine/hooks";
 import Loader from "../components/Loader";
 import classes from "../styles/TripDetailsPage.module.css";
-import placeIcon from "../assets/placeIcon.png"
-
+import placeIcon from "../assets/placeIcon.png";
 
 const TripDetailsPage = () => {
   const { tripId } = useParams();
@@ -66,6 +65,7 @@ const TripDetailsPage = () => {
       if (response.ok) {
         await fetchTrip();
         close();
+        setGrocery({});
       } else {
         const errorData = await response.json();
         alert("Couldn't add grocery item. Reason: " + errorData.message);
@@ -115,6 +115,7 @@ const TripDetailsPage = () => {
       if (response.ok) {
         await fetchTrip();
         close();
+        setGrocery({});
       } else {
         const errorData = await response.json();
         alert("Couldn't add grocery item. Reason: " + errorData.message);
@@ -144,43 +145,43 @@ const TripDetailsPage = () => {
   };
 
   const headerStyle = {
-    backgroundImage: trip?.image ? `url("${trip.image}")` : 'none',
-    position: 'relative',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    color: 'white',
-    textAlign: 'center',
-    padding: '100px 0',
-    zIndex: '1',
-  } 
-
+    backgroundImage: trip?.image ? `url("${trip.image}")` : "none",
+    position: "relative",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    color: "white",
+    textAlign: "center",
+    padding: "100px 0",
+    zIndex: "1",
+  };
 
   return trip ? (
     <Container className={classes.tripCtn}>
       <Card shadow="sm" padding="lg" mb="sm" mt="sm" radius="md" withBorder>
-        <header className={classes.header} style={headerStyle} >
-            <h1 className={classes.tripTitle}>{trip.title}</h1>
+        <header className={classes.header} style={headerStyle}>
+          <h1 className={classes.tripTitle}>{trip.title}</h1>
         </header>
         <SimpleGrid mt="1rem" cols={width > 1200 ? 2 : 1}>
           <div>
-              <div className={classes.destinationCtn}>
-              <img src={placeIcon}/>
+            <div className={classes.destinationCtn}>
+              <img src={placeIcon} />
               <Text className={classes.tripDestination}>
                 {trip.destination}
               </Text>
-              </div>
-            <Text className={classes.tripDescription}>
-              {trip.description}
-            </Text>
+            </div>
+            <Text className={classes.tripDescription}>{trip.description}</Text>
             <div className={classes.iconCtn}>
-            <div  onClick={() => navigate(`/trips/${tripId}/update`)} className={classes.editDeleteCtn}>
-            <IconEdit  />
-            <p>Edit this trip</p>
-            </div>
-            <div onClick={handleDeleteTrip} className={classes.editDeleteCtn}>
-            <IconTrash  />
-            <p>Delete this trip</p>
-            </div>
+              <div
+                onClick={() => navigate(`/trips/${tripId}/update`)}
+                className={classes.editDeleteCtn}
+              >
+                <IconEdit />
+                <p>Edit this trip</p>
+              </div>
+              <div onClick={handleDeleteTrip} className={classes.editDeleteCtn}>
+                <IconTrash />
+                <p>Delete this trip</p>
+              </div>
             </div>
           </div>
           <div>

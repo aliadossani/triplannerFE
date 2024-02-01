@@ -18,3 +18,7 @@
   font-weight: 480;
   color:var(--darkText);
 }
+
+.participantContainer {
+  align-items: center;
+}

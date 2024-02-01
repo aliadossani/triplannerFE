@@ -95,7 +95,15 @@ const GroceryList = ({
               className={classes.lineCtn}
             >
               <div className={classes.itemCtn}>
-                <Image src={grocery?.image} radius="md" mah={50} maw={50} />
+                <Image
+                  src={
+                    grocery?.image ||
+                    "https://img.freepik.com/free-photo/top-view-fresh-vegetables-arrangement_23-2149271094.jpg?w=900&t=st=1706691719~exp=1706692319~hmac=aa12dce3ae0d9b6cf827cc6c9540cc1d90211bd91bd0d201f4f1770b1f3fdf5f"
+                  }
+                  radius="md"
+                  mah={50}
+                  maw={50}
+                />
                 <Space w="xs" />
                 <Text className={classes.itemText}>
                   {grocery.name} ({grocery.quantity})

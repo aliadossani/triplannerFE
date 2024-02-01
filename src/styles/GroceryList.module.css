@@ -13,7 +13,7 @@
     border-color: var(--lightBackground);
     border-radius: 8px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
   }
 
@@ -29,7 +29,8 @@
     font-size: 1em;
     font-weight: bold;
     color:var(--darkText);
-
+    width: 150px;
+    text-align: left;
   }
 
   .labelCtn{
@@ -57,7 +58,7 @@
     font-weight: 600;
     padding: 2px 12px;
     border-radius: 5px;
-    
+    width: 200px;
   }
 
   @media (max-width:500px) {
@@ -66,7 +67,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: space-around;
+      justify-content: space-between;
       box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
       }
     }
