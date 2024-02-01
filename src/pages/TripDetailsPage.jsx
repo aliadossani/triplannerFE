@@ -19,6 +19,9 @@ import ChangeGrocery from "../components/ChangeGrocery";
 import ParticipantList from "../components/ParticipantList";
 import { useViewportSize } from "@mantine/hooks";
 import Loader from "../components/Loader";
+import classes from "../styles/TripDetailsPage.module.css";
+import placeIcon from "../assets/placeIcon.png"
+
 
 const TripDetailsPage = () => {
   const { tripId } = useParams();
@@ -140,24 +143,45 @@ const TripDetailsPage = () => {
     }
   };
 
+  const headerStyle = {
+    backgroundImage: trip?.image ? `url("${trip.image}")` : 'none',
+    position: 'relative',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    color: 'white',
+    textAlign: 'center',
+    padding: '100px 0',
+    zIndex: '1',
+  } 
+
+
   return trip ? (
-    <Container size="md">
+    <Container size="lg">
       <Card shadow="sm" padding="lg" mb="sm" mt="sm" radius="md" withBorder>
-        <Image src={trip.image} radius="md" mah="20vw" />
+        <header className={classes.header} style={headerStyle} >
+            <h1 className={classes.tripTitle}>{trip.title}</h1>
+        </header>
         <SimpleGrid mt="1rem" cols={width > 1200 ? 2 : 1}>
           <div>
-            <Text size="xl" fw={700} c="darkText">
-              {trip.title}
-            </Text>
-            <Text mt="1rem" size="lg" fw={600} c="darkText">
+              <div className={classes.destinationCtn}>
+              <img src={placeIcon}/>
+              <Text className={classes.tripDestination}>
+                {trip.destination}
+              </Text>
+              </div>
+            <Text className={classes.tripDescription}>
               {trip.description}
             </Text>
-            <Text mt="1rem" size="lg" fw={600} c="darkText">
-              {trip.destination}
-            </Text>
-            <Space h="md" />
+            <div className={classes.iconCtn}>
+            <div className={classes.editDeleteCtn}>
             <IconEdit onClick={() => navigate(`/trips/${tripId}/update`)} />
+            <p>Edit this trip</p>
+            </div>
+            <div className={classes.editDeleteCtn}>
             <IconTrash onClick={handleDeleteTrip} />
+            <p>Delete this trip</p>
+            </div>
+            </div>
           </div>
           <div>
             <ParticipantList trip={trip} />

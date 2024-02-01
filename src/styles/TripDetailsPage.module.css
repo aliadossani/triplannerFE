@@ -1,0 +1,52 @@
+.tripTitle{
+    font-size: 2em;
+    line-height: 1.1;
+    font-weight: bold;
+    color:white;
+    padding: 8px;
+  }
+  .tripDestination{
+    font-size: 1.3em;
+    font-weight: 450;
+    color:var(--darkText);
+    align-self: center;
+  }
+  .tripDescription {
+    align-self: center;
+    font-weight: 450;
+    text-align: left;
+    padding: 20px;
+    padding-left: 0px;
+  }
+  
+  .destinationCtn{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+
+  }
+  
+  .destinationCtn img {
+    width:8%
+  }
+
+  .header:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: -1;
+  }
+
+  .editDeleteCtn{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:3%
+  }
+
+
