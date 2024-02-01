@@ -10,6 +10,7 @@ import {
 } from "@mantine/core";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import classes from "../styles/GroceryList.module.css";
 
 const GroceryList = ({
   handleDeleteGrocery,
@@ -79,11 +80,11 @@ const GroceryList = ({
     <Container>
       {groceries.length ? (
         <Container>
-          <Text size="xl" fw={700} c="darkText">
+          <Text className={classes.title}>
             Grocery List
           </Text>
 
-          <Container mt="1rem" maw="70vw">
+          <Container maw="70vw">
             <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
           </Container>
           {groceries.map((grocery, index) => (

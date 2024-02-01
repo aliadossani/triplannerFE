@@ -1,0 +1,8 @@
+.title {
+    font-size: 1.7em;
+    font-weight: 480;
+    color:var(--darkText);
+    align-self: center;
+    padding: 6%;
+    font-weight: bold;
+  }

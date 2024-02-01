@@ -173,12 +173,12 @@ const TripDetailsPage = () => {
               {trip.description}
             </Text>
             <div className={classes.iconCtn}>
-            <div className={classes.editDeleteCtn}>
-            <IconEdit onClick={() => navigate(`/trips/${tripId}/update`)} />
+            <div  onClick={() => navigate(`/trips/${tripId}/update`)} className={classes.editDeleteCtn}>
+            <IconEdit  />
             <p>Edit this trip</p>
             </div>
-            <div className={classes.editDeleteCtn}>
-            <IconTrash onClick={handleDeleteTrip} />
+            <div onClick={handleDeleteTrip} className={classes.editDeleteCtn}>
+            <IconTrash  />
             <p>Delete this trip</p>
             </div>
             </div>
