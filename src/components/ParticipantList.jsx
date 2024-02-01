@@ -5,9 +5,7 @@ const ParticipantList = ({ trip }) => {
   if (!trip?.participants?.length) return <p>No participants available.</p>;
   return (
     <Container>
-      <Text className={classes.title}>
-        Participant List
-      </Text>
+      <Text className={classes.title}>Participant List</Text>
 
       {trip.participants.map((participant, index) => (
         <div className={classes.participantCard} key={index}>
@@ -18,13 +16,13 @@ const ParticipantList = ({ trip }) => {
                 "https://cdn-icons-png.flaticon.com/512/9131/9131529.png"
               }
               radius="md"
-              mah={50}
-              maw={50}
+              // mah={50}
+              // maw={50}
+              w={50}
+              h={50}
             />
             <Space w="md" />
-            <Text className={classes.text}>
-              {participant.username}
-            </Text>
+            <Text className={classes.text}>{participant.username}</Text>
           </Container>
         </div>
       ))}
