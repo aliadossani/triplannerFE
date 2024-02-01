@@ -28,9 +28,8 @@
 }
 .navbar img {
   height: 40px;
-  width: 40px;
-  object-fit: cover;
-  border-radius: 50%;
+  width: auto;
+  
 }
 
 .navlinkBtn {
@@ -55,6 +54,9 @@
   border-radius: 50%;
   margin-top: 0px!important;
   margin-right: 20px;
+  object-fit: cover;
+  height: 40px;
+  width: 40px!important;
 }
 
 .profileEntryText {
