@@ -4,7 +4,7 @@ import "../styles/NotFound.css";
 import { AuthContext } from "../contexts/AuthContext";
 import { useContext } from "react";
 import { Button, Container } from "@mantine/core";
-import errorImage from "../assets/404Page.jpg";
+import errorImage from "../assets/404Page.png";
 
 const NotFoundPage = () => {
   const { isAuthenticated } = useContext(AuthContext);
