@@ -8,6 +8,7 @@ const AuthContextProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [userId, setUserId] = useState();
+  const [userDetails, setUserDetails] = useState({});
 
   const saveToken = (tokenFromLogin) => {
     setToken(tokenFromLogin);
@@ -85,6 +86,8 @@ const AuthContextProvider = ({ children }) => {
         fetchWithToken,
         logout,
         userId,
+        userDetails,
+        setUserDetails,
       }}
     >
       {children}
