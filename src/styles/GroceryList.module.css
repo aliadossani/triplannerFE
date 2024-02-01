@@ -6,3 +6,43 @@
     padding: 6%;
     font-weight: bold;
   }
+
+  .lineCtn{
+    border:solid;
+    border-width: 1px;
+    border-color: var(--lightBackground);
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-around;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .itemCtn{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding:3%
+  }
+
+  .labelCtn{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding:3%
+  }
+
+  .iconCtn{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding:3%;
+  }
+
+  .labelText{
+    color:white;
+    font-size: 1em;
+    font-weight: 600;
+    padding: 2px 12px;
+    border-radius: 5px;
+    
+  }

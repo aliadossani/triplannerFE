@@ -7,6 +7,7 @@ import {
   SimpleGrid,
   Space,
   Text,
+  Box,
 } from "@mantine/core";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -87,22 +88,19 @@ const GroceryList = ({
           <Container maw="70vw">
             <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
           </Container>
+
           {groceries.map((grocery, index) => (
-            <SimpleGrid key={index} mt="1rem" cols={3}>
-              <Center>
+            <SimpleGrid key={index} mt="1rem" cols={3} className={classes.lineCtn}>
+              <div className={classes.itemCtn}>
                 <Image src={grocery?.image} radius="md" mah={50} maw={50} />
                 <Space w="xs" />
                 <Text size="lg" fw={700} c="darkText">
                   {grocery.name} ({grocery.quantity})
                 </Text>
-              </Center>
-              <Center>
-                <Space w="xl" />
+              </div>
+              <div className={classes.labelCtn}>
                 <Text
-                  p="0.2rem"
-                  size="lg"
-                  fw={600}
-                  c="white"
+                  className={classes.labelText}
                   bg={
                     grocery.label === "Needs to be purchased"
                       ? "labelRed"
@@ -111,14 +109,14 @@ const GroceryList = ({
                 >
                   {grocery.label}
                 </Text>
-              </Center>
-              <Center>
+              </div>
+              <div className={classes.iconCtn}>
                 <Space w="xs" />
                 <IconEdit onClick={() => handleEditGroceryModal(grocery)} />
                 <IconTrash onClick={() => handleDeleteGrocery(grocery._id)} />
-              </Center>
+              </div>
             </SimpleGrid>
-          ))}
+          ))} 
         </Container>
       ) : (
         <Container>

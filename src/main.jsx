@@ -19,8 +19,8 @@ const theme = createTheme({
     darkText: generateColors("#3B4948FF"),
     white: generateColors("#FFFFFFFF"),
     lightBackground: generateColors("#E8F3F3FF"),
-    labelGreen: generateColors("#90EE90FF"),
-    labelRed: generateColors("#FA7B7BFF"),
+    labelGreen: generateColors("#27bfd3ff"),
+    labelRed: generateColors("#ec8c70ff"),
   },
 });
 
