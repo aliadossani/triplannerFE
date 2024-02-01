@@ -29,7 +29,7 @@ const HomePage = () => {
           <div className={styles.heroSection}>
             <div className={styles.heroBackground}></div>
             <img src={appLogo} />
-            <h1>
+            <h1 className={styles.homepageTitle}>
               Plan, Pack, and Play <br /> WanderBasket, your ultimate travel
               grocery companion
             </h1>

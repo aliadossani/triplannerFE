@@ -73,6 +73,10 @@
     font-size: 200%;
 }
 
+.homepageTitle{
+    color:white;
+}
+
 @media (max-width:500px) {
     .heroSection h1 {
         font-size: 2em; 
