@@ -50,6 +50,7 @@ const NewTripPage = () => {
     const tripToCreate = {
       title,
       image,
+      description,
       destination,
       participants: selectedParticipants,
     };
@@ -92,7 +93,7 @@ const NewTripPage = () => {
           />
           <TextInput
             label="Description:"
-            name="descriprion"
+            name="description"
             value={description}
             onChange={(event) => setDescription(event.target.value)}
           />
