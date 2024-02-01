@@ -94,7 +94,7 @@ const GroceryList = ({
               <div className={classes.itemCtn}>
                 <Image src={grocery?.image} radius="md" mah={50} maw={50} />
                 <Space w="xs" />
-                <Text size="lg" fw={700} c="darkText">
+                <Text className={classes.itemText}>
                   {grocery.name} ({grocery.quantity})
                 </Text>
               </div>

@@ -21,7 +21,15 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding:3%
+    padding:3%;
+  }
+
+
+  .itemText {
+    font-size: 1em;
+    font-weight: bold;
+    color:var(--darkText);
+
   }
 
   .labelCtn{
@@ -46,3 +54,23 @@
     border-radius: 5px;
     
   }
+
+  @media (max-width:500px) {
+    .lineCtn{
+      width:100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+      }
+    }
+
+    .itemCtn{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      font-size: 1em;
+      padding-top:10%
+    }
+  
