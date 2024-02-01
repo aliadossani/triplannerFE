@@ -43,7 +43,12 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    width: 150px;
+    justify-content: space-around;
     padding:3%;
+    svg {
+      cursor: pointer;
+    }
   }
 
   .labelText{
@@ -71,6 +76,5 @@
       flex-direction: row;
       align-items: center;
       font-size: 1em;
-      padding-top:10%
     }
   
