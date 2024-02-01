@@ -1,17 +1,15 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
-import { TextInput, Button, Container} from '@mantine/core';
-import classes from "../styles/AuthForm.module.css"
+import { TextInput, Button, Container } from "@mantine/core";
+import classes from "../styles/AuthForm.module.css";
 
 const AuthForm = ({ isLogin = false }) => {
   const [picture, setPicture] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
-
   const navigate = useNavigate();
-
   const { saveToken } = useContext(AuthContext);
 
   const handleSubmit = async (event) => {
@@ -33,11 +31,10 @@ const AuthForm = ({ isLogin = false }) => {
       } else if (response.status === 200) {
         // The user was logged in successully
         const parsed = await response.json();
-        console.log(parsed);
         saveToken(parsed.token);
         navigate("/trips");
       } else {
-        alert("Please enter correct username and password")
+        alert("Please enter correct username and password");
       }
     } catch (error) {
       console.log(error);
@@ -49,21 +46,58 @@ const AuthForm = ({ isLogin = false }) => {
       <form onSubmit={handleSubmit} className={classes.formCtn}>
         {!isLogin ? (
           <>
-          <TextInput label="Your Photo:" name="photo" value={picture} onChange={(event) => setPicture(event.target.value)} />
-          <TextInput label="Email:" name="email" value={email} required onChange={(event) => setEmail(event.target.value)} />
-          <TextInput label="Password:" name="password" type="password" required value={password} onChange={(event) => setPassword(event.target.value)} />
-          <TextInput label="Username:" name="username" required  value={username} onChange={(event) => setUsername(event.target.value)} />
+            <TextInput
+              label="Your Photo:"
+              name="photo"
+              value={picture}
+              onChange={(event) => setPicture(event.target.value)}
+            />
+            <TextInput
+              label="Email:"
+              name="email"
+              value={email}
+              required
+              onChange={(event) => setEmail(event.target.value)}
+            />
+            <TextInput
+              label="Password:"
+              name="password"
+              type="password"
+              required
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+            />
+            <TextInput
+              label="Username:"
+              name="username"
+              required
+              value={username}
+              onChange={(event) => setUsername(event.target.value)}
+            />
           </>
         ) : (
           <>
-          <TextInput label="Email:" name="email" value={email} required onChange={(event) => setEmail(event.target.value)} />
+            <TextInput
+              label="Email:"
+              name="email"
+              value={email}
+              required
+              onChange={(event) => setEmail(event.target.value)}
+            />
 
-          <TextInput label="Password:" name="password" type="password" required  value={password} onChange={(event) => setPassword(event.target.value)} />
+            <TextInput
+              label="Password:"
+              name="password"
+              type="password"
+              required
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+            />
           </>
         )}
         <Button mt="md" fullWidth type="submit">
           {isLogin ? "Login" : "Signup"}
-      </Button>
+        </Button>
       </form>
     </Container>
   );

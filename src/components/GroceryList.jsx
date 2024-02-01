@@ -7,7 +7,6 @@ import {
   SimpleGrid,
   Space,
   Text,
-  Box,
 } from "@mantine/core";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -51,6 +50,7 @@ const GroceryList = ({
   useEffect(() => {
     // Call the asynchronous function inside useEffect
     fetchGroceries();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     tripId,
     handleDeleteGrocery,
@@ -81,16 +81,19 @@ const GroceryList = ({
     <Container>
       {groceries.length ? (
         <Container>
-          <Text className={classes.title}>
-            Grocery List
-          </Text>
+          <Text className={classes.title}>Grocery List</Text>
 
           <Container maw="70vw">
             <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
           </Container>
 
           {groceries.map((grocery, index) => (
-            <SimpleGrid key={index} mt="1rem" cols={3} className={classes.lineCtn}>
+            <SimpleGrid
+              key={index}
+              mt="1rem"
+              cols={3}
+              className={classes.lineCtn}
+            >
               <div className={classes.itemCtn}>
                 <Image src={grocery?.image} radius="md" mah={50} maw={50} />
                 <Space w="xs" />
@@ -116,7 +119,7 @@ const GroceryList = ({
                 <IconTrash onClick={() => handleDeleteGrocery(grocery._id)} />
               </div>
             </SimpleGrid>
-          ))} 
+          ))}
         </Container>
       ) : (
         <Container>

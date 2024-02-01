@@ -58,7 +58,6 @@ const ChatbotContainer = () => {
           user: true,
           trigger: "5",
         },
-
         {
           id: "5",
           message:
