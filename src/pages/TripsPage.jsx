@@ -3,7 +3,8 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { IconEdit, IconTrash } from "@tabler/icons-react";
 import { AuthContext } from "../contexts/AuthContext";
 import classes from "../styles/TripsPage.module.css";
-import placeIcon from "../assets/placeIcon.png"
+import placeIcon from "../assets/placeIcon.png";
+import HomePageImage from "../assets/HomePageImage.png";
 import {
   Card,
   Image,
@@ -83,10 +84,10 @@ function TripsPage() {
   if ((tripsFetched && !trips?.length) || !filteredTrips?.length)
     return (
       <Container size="sm">
-        <img
-          className={classes.notFoundImg}
-          src="https://img.freepik.com/free-vector/error-404-concept-landing-page_52683-19704.jpg?w=900&t=st=1706725413~exp=1706726013~hmac=dcc12fa798565fd7be30c19656ab3d648bf612262e17c44d1e7f6adbbfe45660"
-        />
+        <img className={classes.notFoundImg} src={HomePageImage} />
+        <Text size="lg" className={classes.helpText}>
+          No Trips Available
+        </Text>
         <NavLink className={classes.notFound} to="/trips/new">
           <Button>Create Trip</Button>
         </NavLink>
@@ -114,31 +115,29 @@ function TripsPage() {
             <Card.Section>
               <Image src={trip.image} height={300} />
               <div className={classes.descriptionCtn}>
-              <Text className={classes.tripTitle}>
-                {trip.title}
-              </Text>
-              <div className={classes.destinationCtn}>
-              <img src={placeIcon}/>
-              <Text className={classes.tripDestination}>
-                {trip.destination}
-              </Text>
-              </div>
-              <Text className={classes.tripDescription}>
-                {trip.description}
-              </Text>
+                <Text className={classes.tripTitle}>{trip.title}</Text>
+                <div className={classes.destinationCtn}>
+                  <img src={placeIcon} />
+                  <Text className={classes.tripDestination}>
+                    {trip.destination}
+                  </Text>
+                </div>
+                <Text className={classes.tripDescription}>
+                  {trip.description}
+                </Text>
 
-              {/* <Space h="md" /> */}
-              <div className={classes.iconCtn}>
-              <IconEdit
-                onClick={(event) => {
-                  event.preventDefault();
-                  navigate(`/trips/${trip._id}/update`);
-                }}
-              />
-              <IconTrash
-                onClick={(event) => handleDeleteTrip(event, trip._id)}
-              />
-              </div>
+                {/* <Space h="md" /> */}
+                <div className={classes.iconCtn}>
+                  <IconEdit
+                    onClick={(event) => {
+                      event.preventDefault();
+                      navigate(`/trips/${trip._id}/update`);
+                    }}
+                  />
+                  <IconTrash
+                    onClick={(event) => handleDeleteTrip(event, trip._id)}
+                  />
+                </div>
               </div>
             </Card.Section>
           </Card>
