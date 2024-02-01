@@ -131,9 +131,6 @@ const GroceryList = ({
         </Container>
       ) : (
         <Container>
-          <Center>
-            <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-          </Center>
           <Text size="xl" fw={700} c="darkText">
             No groceries available.
           </Text>

@@ -169,7 +169,11 @@ const TripDetailsPage = () => {
                 {trip.destination}
               </Text>
             </div>
-            <Text className={classes.tripDescription}>{trip.description}</Text>
+            {trip.description && (
+              <Text className={classes.tripDescription}>
+                {trip.description}
+              </Text>
+            )}
             <div className={classes.iconCtn}>
               <div
                 onClick={() => navigate(`/trips/${tripId}/update`)}

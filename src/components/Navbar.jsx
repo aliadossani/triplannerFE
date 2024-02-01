@@ -9,6 +9,7 @@ import { Button } from "@mantine/core";
 
 const Navbar = () => {
   const [formData, setFormData] = useState({});
+  const [isOpened, setIsOpened] = useState(false);
   const { isAuthenticated, logout, userId, fetchWithToken, userDetails } =
     useContext(AuthContext);
 
@@ -48,7 +49,7 @@ const Navbar = () => {
             </NavLink>
           </div>
 
-          <Menu>
+          <Menu opened={isOpened} onClick={() => setIsOpened(!isOpened)}>
             <Menu.Target>
               <div className={styles.profileEntryContainer}>
                 <img
@@ -75,13 +76,16 @@ const Navbar = () => {
 
             <Menu.Dropdown>
               <Menu.Label>
-                <NavLink to={`/user/${userId}/update`}>
+                <NavLink
+                  to={`/user/${userId}/update`}
+                  onClick={() => setIsOpened(!isOpened)}
+                >
                   <Text>Edit Profile</Text>
                 </NavLink>
 
                 <Menu.Divider />
 
-                <NavLink to="/">
+                <NavLink to="/" onClick={() => setIsOpened(!isOpened)}>
                   <Text onClick={logout}>Logout</Text>
                 </NavLink>
               </Menu.Label>
