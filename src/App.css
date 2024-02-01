@@ -26,7 +26,7 @@ body, html, #root {
   background: var(--primaryBlue)!important;
   color: white!important;
   svg {
-    fill: black!important;
+    fill: white!important;
   }
 }
 
