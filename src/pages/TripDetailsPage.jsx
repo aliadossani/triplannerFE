@@ -156,7 +156,7 @@ const TripDetailsPage = () => {
 
 
   return trip ? (
-    <Container size="lg">
+    <Container className={classes.tripCtn}>
       <Card shadow="sm" padding="lg" mb="sm" mt="sm" radius="md" withBorder>
         <header className={classes.header} style={headerStyle} >
             <h1 className={classes.tripTitle}>{trip.title}</h1>

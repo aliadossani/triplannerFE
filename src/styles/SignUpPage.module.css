@@ -3,7 +3,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* padding: 40px; */
     min-height: 84%;
     background-color: #f5f5f5;
     flex: 1;
@@ -18,4 +17,8 @@
     width: 100%;
     max-width:500px ;
     padding-bottom: 10px;
+}
+
+.text {
+   padding:2%
 }

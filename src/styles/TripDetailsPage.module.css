@@ -1,3 +1,7 @@
+.tripCtn{
+  margin:0;
+  padding:2%;
+}
 .tripTitle{
     font-size: 2em;
     line-height: 1.1;
