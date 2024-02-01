@@ -23,8 +23,8 @@ body, html, #root {
 }
 
 .rsc-header {
-  background: aqua!important;
-  color: black!important;
+  background: var(--primaryBlue)!important;
+  color: white!important;
   svg {
     fill: black!important;
   }

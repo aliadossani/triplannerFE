@@ -80,15 +80,15 @@ function App() {
         floatingIcon={appLogo}
         floating={true}
         floatingStyle={{
-          background: "aqua",
+          background: " var(--primaryBlue)",
         }}
         bubbleStyle={{
-          background: "aqua",
-          color: "black",
+          background: " var(--primaryBlue)",
+          color: "white",
         }}
         bubbleOptionStyle={{
-          background: "aqua",
-          color: "black",
+          background: " var(--primaryBlue)",
+          color: "white",
         }}
         headerTitle={"Plan your trip with us!"}
         steps={[
