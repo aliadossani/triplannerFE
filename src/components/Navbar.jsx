@@ -9,14 +9,14 @@ import { Button } from "@mantine/core";
 
 const Navbar = () => {
   const [formData, setFormData] = useState({});
-  const { isAuthenticated, logout, userId, fetchWithToken } =
+  const { isAuthenticated, logout, userId, fetchWithToken, userDetails } =
     useContext(AuthContext);
 
   useEffect(() => {
     if (userId) {
       getUserProfile();
     }
-  }, [userId]);
+  }, [userId, userDetails]);
 
   const getUserProfile = async () => {
     try {
