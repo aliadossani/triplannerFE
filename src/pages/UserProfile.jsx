@@ -8,7 +8,7 @@ const UserProfile = () => {
   const { userId } = useParams();
   const [formData, setFormData] = useState({});
   const [trips, setTrips] = useState([]);
-  const { fetchWithToken } = useContext(AuthContext);
+  const { fetchWithToken, setUserDetails } = useContext(AuthContext);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -21,6 +21,7 @@ const UserProfile = () => {
       const response = await fetchWithToken(`/users/${userId}`);
       if (response.ok) {
         const userData = await response.json();
+        console.log("User Data:", userData);
         setFormData(userData);
       } else {
         alert("Couldn't fetch user");
@@ -69,6 +70,8 @@ const UserProfile = () => {
       if (response.ok) {
         // Navigate to Trips
         navigate("/trips");
+        const userDetails = await response.json();
+        setUserDetails(userDetails);
       } else {
         alert("Couldn't update user");
         console.log("Something went wrong");
@@ -98,7 +101,11 @@ const UserProfile = () => {
           onChange={handleInputChange}
         />
         {formData?.picture && (
-          <img className={classes.formImg} src={formData?.picture} />
+          <img
+            key={formData.picture}
+            className={classes.formImg}
+            src={formData?.picture}
+          />
         )}
         <Button mt="md" fullWidth type="submit">
           Save Changes
