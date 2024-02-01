@@ -81,7 +81,7 @@ function TripsPage() {
     navigate("/trips");
   };
 
-  if ((tripsFetched && !trips?.length) || !filteredTrips?.length)
+  if (tripsFetched && !trips?.length) {
     return (
       <Container size="sm">
         <img className={classes.notFoundImg} src={HomePageImage} />
@@ -93,6 +93,7 @@ function TripsPage() {
         </NavLink>
       </Container>
     );
+  }
 
   return (
     <Container>
