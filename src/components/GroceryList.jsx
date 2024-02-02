@@ -1,13 +1,6 @@
-import { IconEdit, IconTrash } from "@tabler/icons-react";
+import { IconEdit, IconTrash, IconX } from "@tabler/icons-react";
 import Search from "../components/Search";
-import {
-  Center,
-  Container,
-  Image,
-  SimpleGrid,
-  Space,
-  Text,
-} from "@mantine/core";
+import { Container, Image, SimpleGrid, Space, Text } from "@mantine/core";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import classes from "../styles/GroceryList.module.css";
@@ -79,14 +72,20 @@ const GroceryList = ({
 
   return (
     <Container>
+      <Text className={classes.title}>Grocery List</Text>
+      <Container maw="70vw" className={classes.searchContainer}>
+        <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+        {searchTerm && (
+          <IconX
+            className={classes.cancelSearch}
+            onClick={() => {
+              setSearchTerm("");
+            }}
+          />
+        )}
+      </Container>
       {groceries.length ? (
         <Container>
-          <Text className={classes.title}>Grocery List</Text>
-
-          <Container maw="70vw">
-            <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-          </Container>
-
           {groceries.map((grocery, index) => (
             <SimpleGrid
               key={index}

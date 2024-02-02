@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { IconEdit, IconTrash } from "@tabler/icons-react";
+import { IconEdit, IconTrash, IconX } from "@tabler/icons-react";
 import { AuthContext } from "../contexts/AuthContext";
 import classes from "../styles/TripsPage.module.css";
 import placeIcon from "../assets/placeIcon.png";
@@ -64,6 +64,7 @@ function TripsPage() {
 
   const handleSearch = (event) => {
     event.preventDefault();
+    if (!searchQuery) return;
     const lowerCaseQuery = searchQuery.toLowerCase();
     const filtered = trips.filter(
       (trip) =>
@@ -72,7 +73,6 @@ function TripsPage() {
     );
     setFilteredTrips(filtered);
     setSearchResultsText(`Results for "${searchQuery}"`);
-    setSearchQuery("");
   };
 
   const handleReloadPage = () => {
@@ -107,6 +107,16 @@ function TripsPage() {
           className={classes.searchInput}
           onChange={(event) => setSearchQuery(event.target.value)}
         />
+        {searchResultsText && (
+          <IconX
+            className={classes.cancelSearch}
+            onClick={() => {
+              setSearchResultsText("");
+              setSearchQuery("");
+              setFilteredTrips(trips);
+            }}
+          />
+        )}
         <Button type="submit">Search</Button>
       </form>
       {searchResultsText && <h2>{searchResultsText}</h2>}

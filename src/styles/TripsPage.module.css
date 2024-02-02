@@ -1,5 +1,6 @@
 .searchContainer {
   display: flex;
+  position: relative;
 }
 
 .searchInput {
@@ -68,4 +69,11 @@
   display: flex;
   justify-content: center;
   gap:3%;
+}
+
+.cancelSearch {
+  position: absolute;
+  top: 6px;
+  right: 100px;
+  cursor: pointer;
 }
