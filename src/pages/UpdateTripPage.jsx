@@ -98,7 +98,7 @@ const UpdateTripPage = () => {
         tripToUpdate
       );
       if (response.status === 200) {
-        navigate(`/trips/${tripId}`);
+        navigate(-1);
       } else {
         console.log("Something went wrong");
       }
