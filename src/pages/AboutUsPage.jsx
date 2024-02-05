@@ -31,7 +31,7 @@ function AboutPage() {
             <Card shadow="sm" padding="lg" radius="md" withBorder>
               <Card.Section>
                 <Image
-                  src="https://drive.google.com/file/d/1jUPZP9_hxbTyBxClacF9KeSH6w6CrEDo/view?usp=sharing"
+                  src="https://lh3.googleusercontent.com/drive-viewer/AEYmBYQoNvU6ssC4nA6WmsG0Tk-oMlNi4WLHohrrhdfGjKR6EfNgHRqIcWOYxnFxrljW_Lax0ddiXJ5znvj0QFtVG6Al1lDz=w1440-h779"
                   height="400vw"
                   width="33vw"
                   alt="Item picture"
