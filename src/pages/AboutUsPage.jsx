@@ -116,7 +116,7 @@ function AboutPage() {
             <Card shadow="sm" padding="lg" radius="md" withBorder>
               <Card.Section>
                 <Image
-                  src="https://media.licdn.com/dms/image/D4D03AQEceePNoAFgjg/profile-displayphoto-shrink_800_800/0/1705564821700?e=1710979200&v=beta&t=P7xxIq6CMrVGS7vjLW7QyzAgeApyqsNFAfEj2-QoC_w"
+                  src="https://media.licdn.com/dms/image/D4E03AQGgrHELLtfxcQ/profile-displayphoto-shrink_800_800/0/1714379782245?e=1720656000&v=beta&t=qhUR4vXZRjqjWUPW7bGF3ggdDBo5pBSV_sUkNiLLUyU"
                   height="400vw"
                   width="33vw"
                   alt="Item picture"
